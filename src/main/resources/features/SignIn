@@ -1,0 +1,13 @@
+Feature: SignIn
+
+  Scenario: Login with valid credentials and logout
+    Given user is on the Home Page
+    When user choose My Account menu
+    And user choose Login
+    And user enter valid 'margarita.gabureac@endava.com' and '0123456'
+    And click on LOGIN button
+    Then user are logged
+    And user is redirected to Account Page
+    And click on My Account dropdown
+    And click on Logout options
+    And user is redirected to Home Page
