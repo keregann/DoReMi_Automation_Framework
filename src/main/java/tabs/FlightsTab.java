@@ -1,10 +1,12 @@
 package tabs;
 
-import driver.Singleton;
-import org.openqa.selenium.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pages.BasePage;
+import pageObjects.BasePage;
 import pages.FlightsResultPage;
+import utils.DriverFactory;
 
 public class FlightsTab extends BasePage {
 
@@ -50,7 +52,7 @@ public class FlightsTab extends BasePage {
     @FindBy(xpath = "//div[contains(@class,'row gap-10 mb-15 align-items-end row-reverse')]//div[2]//div[1]//div[2]//div[1]//span[1]//button[2]")
     WebElement childFieldMinus;
 
-    @FindBy (xpath = "//div[contains(@class,'col-md-3 col-xs-12')]//div[3]//div[1]//div[2]//div[1]//input[1]")
+    @FindBy(xpath = "//div[contains(@class,'col-md-3 col-xs-12')]//div[3]//div[1]//div[2]//div[1]//input[1]")
     WebElement infantField;
 
     @FindBy(xpath = "//div[contains(@class,'col-md-3 col-xs-12')]//div[3]//div[1]//div[2]//div[1]//span[1]//button[1]")
@@ -69,7 +71,7 @@ public class FlightsTab extends BasePage {
         roundTripRadioBtn.click();
         dropDown.click();
         Thread.sleep(500);
-        Singleton.driver.findElement(By.xpath("//li[contains(text(),'First')]")).click();
+        DriverFactory.driver.findElement(By.xpath("//li[contains(text(),'First')]")).click();
         fromField.click();
         fromField.sendKeys("Chisinau");
         Thread.sleep(1500);
@@ -82,10 +84,10 @@ public class FlightsTab extends BasePage {
 
         Thread.sleep(1500);
         departCalendar.click();
-        Singleton.driver.findElement(By.xpath("//div[7]//div[1]//div[1]//div[2]//div[13]")).click();
+        DriverFactory.driver.findElement(By.xpath("//div[7]//div[1]//div[1]//div[2]//div[13]")).click();
         Thread.sleep(1500);
         returnCalendar.click();
-        Singleton.driver.findElement(By.xpath("//div[8]//div[1]//div[1]//div[2]//div[27]")).click();
+        DriverFactory.driver.findElement(By.xpath("//div[8]//div[1]//div[1]//div[2]//div[27]")).click();
         Thread.sleep(1500);
 
         adultsFieldPlus.click();

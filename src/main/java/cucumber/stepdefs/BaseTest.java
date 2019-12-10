@@ -1,19 +1,19 @@
-package steps;
+package cucumber.stepdefs;
 
-import driver.Singleton;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
+import utils.DriverFactory;
 
 public class BaseTest {
 
     @BeforeClass
-    public static void setUp(){
-        Singleton.initialize();
+    public static void setUp() {
+        DriverFactory.initialize();
     }
 
     @AfterClass
     public static void tearDown() throws InterruptedException {
         Thread.sleep(2000);
-        Singleton.quit();
+        DriverFactory.quit();
     }
 }

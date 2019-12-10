@@ -1,9 +1,11 @@
 package pages;
 
-import driver.Singleton;
+
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import pageObjects.BasePage;
+import utils.DriverFactory;
 
 public class FlightBookingPage extends BasePage {
 
@@ -74,7 +76,7 @@ public class FlightBookingPage extends BasePage {
     @FindBy(xpath = "//button[@id='confirmBooking']")
     WebElement confirmBtn;
 
-    JavascriptExecutor js = (JavascriptExecutor) Singleton.driver;
+    JavascriptExecutor js = (JavascriptExecutor) DriverFactory.driver;
 
     public FlightBookingPage enterData() throws InterruptedException {
         js.executeScript("window.scrollBy(0,200)");
@@ -94,7 +96,6 @@ public class FlightBookingPage extends BasePage {
 
         js.executeScript("window.scrollBy(0,500)");
         Thread.sleep(2000);
-
 
 
         //Payments

@@ -1,11 +1,11 @@
 package pages;
 
-import driver.Constants;
-import driver.Singleton;
 import lombok.Data;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pages.BasePage;
+import pageObjects.BasePage;
+import utils.Constants;
+import utils.DriverFactory;
 
 import static jdk.nashorn.internal.runtime.regexp.joni.Config.log;
 
@@ -52,7 +52,7 @@ public class LoginPage extends BasePage {
         forgotPasswordButton.click();
     }
 
-    public void goToLoginPage(){
-        Singleton.driver.get(Constants.LOGIN_PAGE_URL);
+    public void goToLoginPage() {
+        DriverFactory.driver.get(Constants.LOGIN_PAGE_URL);
     }
 }

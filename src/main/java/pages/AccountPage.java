@@ -2,7 +2,7 @@ package pages;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
+import pageObjects.BasePage;
 
 public class AccountPage extends BasePage {
 
@@ -14,11 +14,11 @@ public class AccountPage extends BasePage {
     WebElement wishlist;
     @FindBy(xpath = "//a[@class='go-text-right nav-link']")
     WebElement newsletter;
-   /* is immutable fields
-    @FindBy(xpath = "//input[@placeholder='First Name']")
-    WebElement firstName;
-    @FindBy(xpath = "//input[@placeholder='Last Name']")
-    WebElement lastName;*/
+    /* is immutable fields
+     @FindBy(xpath = "//input[@placeholder='First Name']")
+     WebElement firstName;
+     @FindBy(xpath = "//input[@placeholder='Last Name']")
+     WebElement lastName;*/
     @FindBy(xpath = "//input[@placeholder='Phone']")
     WebElement phone;
     @FindBy(xpath = "//input[@placeholder='Email']")
@@ -47,7 +47,7 @@ public class AccountPage extends BasePage {
     }
 
     public void goToMyProfile() {
-       myProfile.click();
+        myProfile.click();
     }
 
     public void goToWishlist() {
@@ -74,12 +74,13 @@ public class AccountPage extends BasePage {
     public void setAddress(String address) {
         this.address.sendKeys(address);
     }
+
     public void setAddress2(String address2) {
         this.address2.sendKeys(address2);
     }
 
     public void setCity(String city) {
-        this.city .sendKeys(city);
+        this.city.sendKeys(city);
     }
 
     public void setStateRegion(String stateRegion) {
