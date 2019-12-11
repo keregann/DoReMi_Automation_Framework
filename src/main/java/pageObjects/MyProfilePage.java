@@ -5,19 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 @Data
-public class AccountPage extends BasePage {
+public class MyProfilePage extends BasePage {
 
-    @FindBy(xpath = "//a[@class='nav-link go-text-right active']")
-    WebElement bookings;
-
-    @FindBy(xpath = "//a[contains(text(),'My Profile')]")
-    WebElement myProfile;
-
-    @FindBy(xpath = "//a[contains(text(),'Wishlist')]")
-    WebElement wishlist;
-
-    @FindBy(xpath = "//a[@class='go-text-right nav-link']")
-    WebElement newsletter;
     /* is immutable fields
      @FindBy(xpath = "//input[@placeholder='First Name']")
      WebElement firstName;
@@ -55,22 +44,6 @@ public class AccountPage extends BasePage {
 
     @FindBy(xpath = "//button[@class='btn btn-block updateprofile btn-primary']")
     WebElement submitButton;
-
-    public void goToBookings() {
-        bookings.click();
-    }
-
-    public void goToMyProfile() {
-        myProfile.click();
-    }
-
-    public void goToWishlist() {
-        wishlist.click();
-    }
-
-    public void goToNewsletter() {
-        newsletter.click();
-    }
 
     public void changePhone(String phone) {
         this.phone.sendKeys(phone);

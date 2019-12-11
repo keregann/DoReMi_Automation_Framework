@@ -15,6 +15,18 @@ public class UserAccountPage extends BasePage {
 
     @FindBy(xpath = "//a[@class='dropdown-item active tr']")
     WebElement account;
+
+    @FindBy(xpath = "//a[@class='nav-link go-text-right active']")
+    WebElement bookings;
+
+    @FindBy(xpath = "//a[contains(text(),'My Profile')]")
+    WebElement myProfile;
+
+    @FindBy(xpath = "//a[contains(text(),'Wishlist')]")
+    WebElement wishlist;
+
+    @FindBy(xpath = "//a[@class='go-text-right nav-link']")
+    WebElement newsletter;
 //
 //    public void clickUser() throws InterruptedException {
 //        Thread.sleep(3000);

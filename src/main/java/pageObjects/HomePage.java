@@ -1,6 +1,8 @@
 package pageObjects;
 
 import lombok.Data;
+import managers.FileReaderManager;
+import managers.WebDriverManager;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -19,6 +21,10 @@ public class HomePage extends BasePage {
     @FindBy(xpath = "//a[@class='dropdown-item tr']")
     WebElement singUp;
 
+
+    public void goToHomePage() {
+        driver.get(FileReaderManager.getInstance().getConfigReader().getApplicationUrl());
+    }
 
 //    public void clickMyAccount() {
 //        myAccount.click();

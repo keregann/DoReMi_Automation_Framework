@@ -1,4 +1,6 @@
-package drivermanager;
+package dataProviders;
+
+import managers.drivermanager.DriverType;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -8,7 +10,7 @@ import java.util.Properties;
 
 
 public class ConfigFileReader {
-    private final String propertyFilePath = "src/main/resources/properties/application.properties";
+    private final String propertyFilePath = "src/main/resources/application.properties";
     private Properties properties;
 
     public ConfigFileReader() {
@@ -61,13 +63,6 @@ public class ConfigFileReader {
         else
             throw new RuntimeException("Browser Name Key value in application.properties is not matched : " + browserName);
     }
-
-//    public EnvironmentType getEnvironment() {
-//        String environmentName = properties.getProperty("environment");
-//        if(environmentName == null || environmentName.equalsIgnoreCase("local")) return EnvironmentType.LOCAL;
-//        else if(environmentName.equals("remote")) return EnvironmentType.REMOTE;
-//        else throw new RuntimeException("Environment Type Key value in Configuration.properties is not matched : " + environmentName);
-//    }
 
     public Boolean getBrowserWindowSize() {
         String windowSize = properties.getProperty("windowMaximize");
