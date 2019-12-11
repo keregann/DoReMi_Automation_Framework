@@ -3,7 +3,7 @@ package pageObjects;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class HotelDetailsPage extends BasePage{
+public class HotelDetailsPage extends BasePage {
 
     @FindBy(xpath = "//a[text() = 'See price and date']")
     private WebElement seePriceAndDate;

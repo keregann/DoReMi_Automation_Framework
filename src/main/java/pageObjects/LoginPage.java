@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 @Data
-public class LoginPage extends Page {
+public class LoginPage extends BasePage {
 
     @FindBy(xpath = "//input[@placeholder='Email']")
     WebElement email;
@@ -14,7 +14,7 @@ public class LoginPage extends Page {
     WebElement password;
 
     @FindBy(xpath = "//label[@class='custom-control-label']")
-    WebElement chekBoxRememberMe;
+    WebElement checkBoxRememberMe;
 
     @FindBy(xpath = "//button[@class='btn btn-primary btn-lg btn-block loginbtn']")
     WebElement loginButton;
@@ -25,25 +25,27 @@ public class LoginPage extends Page {
     @FindBy(xpath = "//a[@class='btn btn-warning br25 btn-block']")
     WebElement forgotPasswordButton;
 
-//    public void inputData(String email, String password) {
-//        log.print("you was in inputData method");
-//        this.email.sendKeys(email);
-//        this.password.sendKeys(password);
-//    }
+    public void inputData(String email, String password) {
+        this.email.sendKeys(email);
+        this.password.sendKeys(password);
+        this.loginButton.click();
+    }
 
-//    public void clickChekBoxRememberMe() {
-//        chekBoxRememberMe.click();
-//    }
-//
-//    public void clickLoginButton() {
-//        loginButton.click();
-//    }
-//
-//    public void clickSingUpButton() {
-//        singUpButton.click();
-//    }
-//
-//    public void clickForgotPasswordButton() {
-//        forgotPasswordButton.click();
-//    }
+    public void clickCheckBoxRememberMe() {
+        checkBoxRememberMe.click();
+    }
+
+    public void clickLoginButton() {
+        loginButton.click();
+    }
+
+    public void clickSingUpButton() {
+        singUpButton.click();
+    }
+
+    public void clickForgotPasswordButton() {
+        forgotPasswordButton.click();
+    }
+
+
 }

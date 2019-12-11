@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 @Data
-public class UserAccountPage extends Page {
+public class UserAccountPage extends BasePage {
 
     @FindBy(xpath = "//div[@class='dropdown dropdown-login dropdown-tab']//a[@id='dropdownCurrency']")
     WebElement user;
@@ -15,17 +15,17 @@ public class UserAccountPage extends Page {
 
     @FindBy(xpath = "//a[@class='dropdown-item active tr']")
     WebElement account;
+//
+//    public void clickUser() throws InterruptedException {
+//        Thread.sleep(3000);
+//        user.click();
+//    }
 
-    public void clickUser() throws InterruptedException {
-        Thread.sleep(3000);
-        user.click();
-    }
-
-    public void clickLogOut() {
-        logOut.click();
-    }
-
-    public void clickAccount() {
-        account.click();
-    }
+//    public void clickLogOut() {
+//        logOut.click();
+//    }
+//
+//    public void clickAccount() {
+//        account.click();
+//    }
 }

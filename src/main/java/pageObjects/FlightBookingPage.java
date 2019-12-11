@@ -1,11 +1,9 @@
-package pages;
+package pageObjects;
 
 
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pageObjects.BasePage;
-import utils.DriverFactory;
 
 public class FlightBookingPage extends BasePage {
 
@@ -76,7 +74,7 @@ public class FlightBookingPage extends BasePage {
     @FindBy(xpath = "//button[@id='confirmBooking']")
     WebElement confirmBtn;
 
-    JavascriptExecutor js = (JavascriptExecutor) DriverFactory.driver;
+    JavascriptExecutor js = (JavascriptExecutor) driver;
 
     public FlightBookingPage enterData() throws InterruptedException {
         js.executeScript("window.scrollBy(0,200)");
