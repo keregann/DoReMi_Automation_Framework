@@ -22,7 +22,7 @@ public class PaymentDetailsPage extends BasePage {
     @FindBy(xpath = "//input[@id='last_name']")
     private WebElement lastNameField;
 
-   @FindBy(xpath = "/html[1]/body[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[2]/form[1]/div[1]/div[2]/div[2]/div[2]/input[1]")
+    @FindBy(xpath = "/html[1]/body[1]/div[2]/div[1]/div[1]/div[1]/div[1]/div[2]/form[1]/div[1]/div[2]/div[2]/div[2]/input[1]")
     private WebElement emailField;
 
     @FindBy(xpath = "//input[@id='phone_number']")
@@ -56,7 +56,7 @@ public class PaymentDetailsPage extends BasePage {
         chosenOption.click();
     }
 
-    private void selectExpirationDate(int month, int year){
+    private void selectExpirationDate(int month, int year) {
         WebElement monthField = driver.findElement(By.xpath("//select[@name='month']"));
         monthField.click();
         WebElement monthOption = driver.findElement(By.xpath("//option[contains(text(),'" + month + "')]"));

@@ -1,12 +1,11 @@
-package tabs;
+package pageObjects.tabs;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pageObjects.BasePage;
-import pages.FlightsResultPage;
-import utils.DriverFactory;
+import pageObjects.FlightsResultPage;
 
 public class FlightsTab extends BasePage {
 
@@ -71,7 +70,7 @@ public class FlightsTab extends BasePage {
         roundTripRadioBtn.click();
         dropDown.click();
         Thread.sleep(500);
-        DriverFactory.driver.findElement(By.xpath("//li[contains(text(),'First')]")).click();
+        driver.findElement(By.xpath("//li[contains(text(),'First')]")).click();
         fromField.click();
         fromField.sendKeys("Chisinau");
         Thread.sleep(1500);
@@ -84,10 +83,10 @@ public class FlightsTab extends BasePage {
 
         Thread.sleep(1500);
         departCalendar.click();
-        DriverFactory.driver.findElement(By.xpath("//div[7]//div[1]//div[1]//div[2]//div[13]")).click();
+        driver.findElement(By.xpath("//div[7]//div[1]//div[1]//div[2]//div[13]")).click();
         Thread.sleep(1500);
         returnCalendar.click();
-        DriverFactory.driver.findElement(By.xpath("//div[8]//div[1]//div[1]//div[2]//div[27]")).click();
+        driver.findElement(By.xpath("//div[8]//div[1]//div[1]//div[2]//div[27]")).click();
         Thread.sleep(1500);
 
         adultsFieldPlus.click();

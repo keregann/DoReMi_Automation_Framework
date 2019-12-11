@@ -3,8 +3,6 @@ package drivermanager;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeDriverService;
 
-import java.io.File;
-
 public class ChromeDriverManager extends DriverManager {
 
     ChromeDriverService chromeService;

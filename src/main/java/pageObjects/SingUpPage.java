@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 @Data
-public class SingUpPage extends Page {
+public class SingUpPage extends BasePage {
 
     @FindBy(xpath = "//input[@placeholder='First Name']")
     WebElement firstName;

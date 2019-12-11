@@ -1,17 +1,17 @@
-package tabs;
+package pageObjects.tabs;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import pageObjects.BasePage;
 
 
-public class HotelsTab {
-    private WebDriver driver;
-
-    public HotelsTab(WebDriver driver) {
-        this.driver = driver;
-    }
+public class HotelsTab extends BasePage {
+//    private WebDriver driver;
+//
+//    public HotelsTab(WebDriver driver) {
+//        this.driver = driver;
+//    }
 
     @FindBy(xpath = "//a[@href='#hotels']")
     WebElement hotelsBooking;
@@ -63,7 +63,7 @@ public class HotelsTab {
         WebElement prevLink = driver.findElement(By.xpath("//div[1]//nav[1]//div[1]"));
         WebElement midLink = driver.findElement(By.xpath("//div[1]//nav[1]//div[2]"));
         WebElement nextLink = driver.findElement(By.xpath("//div[1]//nav[1]//div[3]"));
-      //  nextLink.click();
+        //  nextLink.click();
         Thread.sleep(2000);
         WebElement dayElem = driver.findElement(By.xpath("//div[@id='datepickers-container']//div[1]//div[1]//div[1]//div[2]//div[text()='" + day + "']"));
         dayElem.click();
@@ -76,7 +76,7 @@ public class HotelsTab {
         WebElement prevLink = driver.findElement(By.xpath("//div[2]//nav[1]//div[1]"));
         WebElement midLink = driver.findElement(By.xpath("//div[2]//nav[1]//div[2]"));
         WebElement nextLink = driver.findElement(By.xpath("//div[2]//nav[1]//div[3]"));
-      //  nextLink.click();
+        //  nextLink.click();
         Thread.sleep(2000);
         WebElement dayElem = driver.findElement(By.xpath("//div[@id='datepickers-container']//div[2]//div[1]//div[1]//div[2]//div[text()='" + day + "']"));
         dayElem.click();

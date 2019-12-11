@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 @Data
-public class AccountPage extends Page {
+public class AccountPage extends BasePage {
 
     @FindBy(xpath = "//a[@class='nav-link go-text-right active']")
     WebElement bookings;

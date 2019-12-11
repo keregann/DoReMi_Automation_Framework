@@ -4,7 +4,7 @@ Feature: SignIn
     Given user is on the Home Page
     When user choose My Account menu
     And user choose Login
-    And user enter valid 'margarita.gabureac@endava.com' and '0123456'
+    And user enter valid 'user@phptravels.com' and 'demouser'
     And click on LOGIN button
     Then user are logged
     And user is redirected to Account Page

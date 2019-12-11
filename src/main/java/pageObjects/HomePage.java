@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 @Data
-public class HomePage extends Page {
+public class HomePage extends BasePage {
 
     @FindBy(xpath = "//a[contains(text(),'Home')]")
     WebElement homePage;
@@ -19,11 +19,11 @@ public class HomePage extends Page {
     @FindBy(xpath = "//a[@class='dropdown-item tr']")
     WebElement singUp;
 
-    //
-    public void clickMyAccount() {
-        myAccount.click();
-    }
 
+//    public void clickMyAccount() {
+//        myAccount.click();
+//    }
+//
 //    public void clickLogin() {
 //        logIn.click();
 //    }

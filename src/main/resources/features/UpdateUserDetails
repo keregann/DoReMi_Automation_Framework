@@ -1,5 +1,5 @@
 Feature: Login
-Bacground:
+
   Scenario: Login and update user ditailes
     Given user is on the Account Page
     When user choose My Account menu

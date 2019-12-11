@@ -6,8 +6,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Properties;
 
-import drivermanager.DriverType;
-
 
 public class ConfigFileReader {
     private final String propertyFilePath = "src/main/resources/properties/application.properties";
