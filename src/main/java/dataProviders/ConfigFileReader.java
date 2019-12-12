@@ -1,6 +1,6 @@
 package dataProviders;
 
-import managers.drivermanager.DriverType;
+import enums.DriverType;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;

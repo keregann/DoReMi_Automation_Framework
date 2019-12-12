@@ -2,7 +2,7 @@ package managers;
 
 import java.util.concurrent.TimeUnit;
 
-import managers.drivermanager.DriverType;
+import enums.DriverType;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;

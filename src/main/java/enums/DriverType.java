@@ -1,4 +1,4 @@
-package managers.drivermanager;
+package enums;
 
 public enum DriverType {
     CHROME,
