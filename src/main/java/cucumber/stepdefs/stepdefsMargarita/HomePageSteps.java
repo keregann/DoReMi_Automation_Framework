@@ -17,6 +17,7 @@ public class HomePageSteps {
     }
 
     private static Logger log = Logger.getLogger(HomePageSteps.class);
+
     @Given("^user is on the Home Page$")
     public void user_is_on_Home_Page() {
         homePage.goToHomePage();
