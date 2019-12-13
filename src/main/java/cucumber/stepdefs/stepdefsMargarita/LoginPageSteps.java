@@ -1,19 +1,21 @@
 package cucumber.stepdefs.stepdefsMargarita;
 
-import cucumber.TestContext;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import managers.PageObjectManager;
+import managers.WebDriverManager;
 import pageObjects.HomePage;
 import pageObjects.LoginPage;
 
 public class LoginPageSteps {
-    TestContext testContext;
+    PageObjectManager pageObjectManager;
     LoginPage loginPage;
+    String s;
 
-    public LoginPageSteps(TestContext context) {
-        testContext = context;
-        loginPage = testContext.getPageObjectManager().getLoginPage();
+    public LoginPageSteps() {
+        pageObjectManager = new PageObjectManager(WebDriverManager.driver);
+        loginPage = pageObjectManager.getLoginPage();
     }
 
     @Then("^Login Page is displayed$")

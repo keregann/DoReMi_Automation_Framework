@@ -1,19 +1,20 @@
 package cucumber.stepdefs.stepdefsMargarita;
 
-import cucumber.TestContext;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.When;
+import managers.PageObjectManager;
+import managers.WebDriverManager;
 import org.apache.log4j.Logger;
 import pageObjects.HomePage;
 
 public class HomePageSteps {
-    TestContext testContext;
+    PageObjectManager pageObjectManager;
     HomePage homePage;
 
-    public HomePageSteps(TestContext context) {
-        testContext = context;
-        homePage = testContext.getPageObjectManager().getHomePage();
+    public HomePageSteps() {
+        pageObjectManager = new PageObjectManager(WebDriverManager.driver);
+        homePage = pageObjectManager.getHomePage();
     }
 
     private static Logger log = Logger.getLogger(HomePageSteps.class);

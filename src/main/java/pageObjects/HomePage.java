@@ -23,8 +23,9 @@ public class HomePage extends BasePage {
 
 
     public void goToHomePage() {
-        driver.get(FileReaderManager.getInstance().getConfigReader().getApplicationUrl());
+        System.out.println("Home page is displayed");
     }
+
 
 //    public void clickMyAccount() {
 //        myAccount.click();

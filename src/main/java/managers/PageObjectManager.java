@@ -16,7 +16,7 @@ public class PageObjectManager {
         this.driver = driver;
     }
 
-    public HomePage getHomePage() {
+    public HomePage getHomePage() {//Base page abstract
         return (homePage == null) ? homePage = new HomePage() : homePage;
     }
 

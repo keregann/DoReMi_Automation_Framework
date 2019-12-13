@@ -1,18 +1,19 @@
 package cucumber.stepdefs.stepdefsMargarita;
 
-import cucumber.TestContext;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import managers.PageObjectManager;
+import managers.WebDriverManager;
 import pageObjects.UserAccountPage;
 
 public class UserAccountPageSteps {
-    TestContext testContext;
+    PageObjectManager pageObjectManager;
     UserAccountPage userAccountPage;
 
-    public UserAccountPageSteps(TestContext context) {
-        testContext = context;
-        userAccountPage = testContext.getPageObjectManager().getUserAccountPage();
+    public UserAccountPageSteps() {
+        pageObjectManager = new PageObjectManager(WebDriverManager.driver);
+        userAccountPage = pageObjectManager.getUserAccountPage();
     }
 
     @Then("^Account Page is displayed$")

@@ -1,47 +1,47 @@
 package managers;
 
-import java.util.concurrent.TimeUnit;
-
 import enums.DriverType;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 
+import java.util.concurrent.TimeUnit;
+
 public class WebDriverManager {
+    private static final String IE_DRIVER_PROPERTY = "webdriver.ie.driver";
     private static final String CHROME_DRIVER_PROPERTY = "webdriver.chrome.driver";
+    private static WebDriverManager webDriverManager = new WebDriverManager();
     public static WebDriver driver;
     private static DriverType driverType;
+    private static int counter = 1;
 
-    public WebDriverManager() {
+    private WebDriverManager() {
         driverType = FileReaderManager.getInstance().getConfigReader().getBrowser();
     }
 
-    public WebDriver getDriver() {
-        if (driver == null) driver = createDriver();
-        return driver;
-    }
-
-    private WebDriver createDriver() {
+    public static WebDriver createDriver() {
+        System.out.println("Driver before " + counter + " time " + "created :  ------ " + driver);
         switch (driverType) {
             case CHROME:
-                System.setProperty(CHROME_DRIVER_PROPERTY, FileReaderManager.getInstance().getConfigReader().getDriverPath());
+                System.setProperty(CHROME_DRIVER_PROPERTY, FileReaderManager.getInstance().getConfigReader().getDriverPath(driverType));
                 driver = new ChromeDriver();
+                counter++;
                 break;
             case IE:
+                System.setProperty(IE_DRIVER_PROPERTY, FileReaderManager.getInstance().getConfigReader().getDriverPath(driverType));
                 driver = new InternetExplorerDriver();
                 break;
         }
-
-        if (FileReaderManager.getInstance().getConfigReader().getBrowserWindowSize()) {
-            driver.manage().window().maximize();
-        }
+        driver.get(FileReaderManager.getInstance().getConfigReader().getApplicationUrl());
+        driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(FileReaderManager.getInstance().getConfigReader().getImplicitlyWait(), TimeUnit.SECONDS);
         return driver;
     }
 
-    public void closeDriver() {
-        driver.close();
-        driver.quit();
+    public static void closeDriver() {
+        if (driver != null) {
+            driver.quit();
+            System.out.println("Driver after closed:  ------" + driver);
+        }
     }
-
 }
