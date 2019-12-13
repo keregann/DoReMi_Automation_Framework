@@ -4,10 +4,11 @@ import managers.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
+import static managers.WebDriverManager.driver;
+
 public class BasePage {
-    public static WebDriver driver;
+
     public BasePage() {
-        driver = WebDriverManager.driver;
-        PageFactory.initElements(driver, this);
+        PageFactory.initElements(WebDriverManager.driver, this);
     }
 }

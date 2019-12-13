@@ -1,6 +1,9 @@
 package dataProviders;
 
 import enums.DriverType;
+import jdk.nashorn.internal.runtime.regexp.joni.Config;
+import managers.FileReaderManager;
+import sun.security.provider.ConfigFile;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -12,14 +15,15 @@ import java.util.Properties;
 public class ConfigFileReader {
     private final String propertyFilePath = "src/main/resources/application.properties";
     private Properties properties;
+    private static ConfigFileReader configFileReader = new ConfigFileReader();
 
     public ConfigFileReader() {
         BufferedReader reader;
         try {
-            reader = new BufferedReader(new FileReader(propertyFilePath));
-            properties = new Properties();
+            reader = new BufferedReader(new FileReader(propertyFilePath));// reads the property file
+            properties = new Properties();// creates a new Properties object
             try {
-                properties.load(reader);
+                properties.load(reader);// pushes the property file into it
                 reader.close();
             } catch (IOException e) {
                 e.printStackTrace();
@@ -30,8 +34,22 @@ public class ConfigFileReader {
         }
     }
 
-    public String getDriverPath() {
-        String driverPath = properties.getProperty("driverPath");
+    public static ConfigFileReader getInstance() {
+        return configFileReader;
+    }
+
+    public String getDriverPath(DriverType driverType) {
+        String driverPath;
+        switch (driverType) {
+            case CHROME:
+                driverPath = properties.getProperty("chromeDriverPath");
+                break;
+            case IE:
+                driverPath = properties.getProperty("ieDriverPath");
+                break;
+            default:
+                throw new IllegalStateException("Unexpected value: " + driverType);
+        }
         if (driverPath != null) return driverPath;
         else
             throw new RuntimeException("Driver Path not specified in the Configuration.properties file for the Key:driverPath");
@@ -59,7 +77,7 @@ public class ConfigFileReader {
     public DriverType getBrowser() {
         String browserName = properties.getProperty("browser");
         if (browserName == null || browserName.equals("chrome")) return DriverType.CHROME;
-        else if (browserName.equalsIgnoreCase("firefox")) return DriverType.IE;
+        else if (browserName.equalsIgnoreCase("ie")) return DriverType.IE;
         else
             throw new RuntimeException("Browser Name Key value in application.properties is not matched : " + browserName);
     }

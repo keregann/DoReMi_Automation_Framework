@@ -1,6 +1,6 @@
 Feature: Login
 
-  Scenario: Login and update user ditailes
+  Scenario: Login and update user details
     Given user is on the Account Page
     When user choose My Account menu
     And user choose Account
