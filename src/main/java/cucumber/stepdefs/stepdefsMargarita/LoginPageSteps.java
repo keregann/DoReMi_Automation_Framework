@@ -5,7 +5,7 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import managers.PageObjectManager;
 import managers.WebDriverManager;
-import pageObjects.HomePage;
+import org.apache.log4j.Logger;
 import pageObjects.LoginPage;
 
 public class LoginPageSteps {
@@ -18,9 +18,12 @@ public class LoginPageSteps {
         loginPage = pageObjectManager.getLoginPage();
     }
 
-    @Then("^Login Page is displayed$")
-    public void loginPageIsDisplayed() {
-    }
+    private static Logger log = Logger.getLogger(HomePageSteps.class);
+
+//    @Then("^'(.*)' Page is displayed$")
+//    public void loginPageIsDisplayed(String page) {
+//        log.info(String.format("INFO LOG: %s Page is displayed", page));
+//    }
 
     @When("user enters '(.*)' as email and '(.*)' as password")
     public void userEnterValidEmailAndPassword(String email, String password) {
@@ -28,8 +31,19 @@ public class LoginPageSteps {
         loginPage.getPassword().sendKeys(password);
     }
 
-    @And("^clicks on Login button$")
-    public void clickOnLoginButton() {
+    @And("^user clicks on '(.*)' button$")
+    public void clickOnLoginButton(String button) {
         loginPage.getLoginButton().click();
+        log.info(String.format("INFO LOG: User clicks on the %s", button));
+    }
+
+    @When("^user enter invalid valid '(.*)' and '(.*)'$")
+    public void userEnterInvalidEmailAndPassword(String email, String password) {
+        loginPage.getEmail().sendKeys(email);
+        loginPage.getPassword().sendKeys(password);
+    }
+
+    @Then("^warning message is present on the page$")
+    public void warningMessageIsPresentOnThePage() {
     }
 }

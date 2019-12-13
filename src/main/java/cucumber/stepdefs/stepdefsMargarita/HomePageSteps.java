@@ -19,19 +19,22 @@ public class HomePageSteps {
 
     private static Logger log = Logger.getLogger(HomePageSteps.class);
 
-    @Given("^user is on the Home Page$")
-    public void user_is_on_Home_Page() {
+
+    @Given("^user is on the '(.*)'$")
+    public void user_is_on_Home_Page(String page) {
         homePage.goToHomePage();
-        log.info("INFO LOG: user is on the Home Page step");
+        log.info(String.format("INFO LOG: User is on the %s", page));
     }
 
-    @When("^user clicks My Account menu$")
-    public void userClicksMyAccountMenu() {
+    @When("^user clicks '(.*)' menu$")
+    public void userClicksMyAccountMenu(String menu) {
         homePage.getMyAccount().click();
+        log.info(String.format("INFO LOG: User clicks on the %s", menu));
     }
 
-    @And("^user clicks Login$")
-    public void userClicksLogin() {
+    @And("^user clicks '(.*)' button$")
+    public void userClicksLogin(String button) {
         homePage.getLogIn().click();
+        log.info(String.format("INFO LOG: User clicks on the %s", button));
     }
 }

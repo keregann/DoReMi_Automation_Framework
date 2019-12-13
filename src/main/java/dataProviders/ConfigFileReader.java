@@ -1,9 +1,6 @@
 package dataProviders;
 
 import enums.DriverType;
-import jdk.nashorn.internal.runtime.regexp.joni.Config;
-import managers.FileReaderManager;
-import sun.security.provider.ConfigFile;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
