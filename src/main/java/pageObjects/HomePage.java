@@ -1,8 +1,6 @@
 package pageObjects;
 
 import lombok.Data;
-import managers.FileReaderManager;
-import managers.WebDriverManager;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
