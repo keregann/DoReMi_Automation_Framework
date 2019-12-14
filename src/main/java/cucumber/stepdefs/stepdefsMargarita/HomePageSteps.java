@@ -8,6 +8,9 @@ import managers.WebDriverManager;
 import org.apache.log4j.Logger;
 import pageObjects.HomePage;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class HomePageSteps {
     PageObjectManager pageObjectManager;
     HomePage homePage;
@@ -17,6 +20,11 @@ public class HomePageSteps {
         homePage = pageObjectManager.getHomePage();
     }
 
+    static {
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy-hh-mm-ss");
+        System.setProperty("current.date.time", dateFormat.format(new Date()));
+    }
     private static Logger log = Logger.getLogger(HomePageSteps.class);
 
 
