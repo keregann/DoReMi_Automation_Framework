@@ -1,11 +1,15 @@
 package pageObjects;
 
 import lombok.Data;
+import lombok.Getter;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-@Data
+@Getter
 public class SignUpPage extends BasePage {
+
+    @FindBy(xpath = "//a[@class='collapse-link']")
+    private WebElement signUpPage;
 
     @FindBy(xpath = "//input[@placeholder='First Name']")
     private WebElement firstName;
@@ -26,5 +30,5 @@ public class SignUpPage extends BasePage {
     private WebElement confirmPassword;
 
     @FindBy(xpath = "//button[@class='signupbtn btn_full btn btn-success btn-block btn-lg']")
-    private WebElement singUpButton;
+    private WebElement signUp;
 }

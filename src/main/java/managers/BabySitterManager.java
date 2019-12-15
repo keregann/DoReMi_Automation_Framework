@@ -2,8 +2,11 @@ package managers;
 
 import cucumber.api.DataTable;
 import org.junit.Assert;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import utils.ScreenShotsMaker;
 
 import java.lang.reflect.Method;
 import java.util.List;
@@ -14,11 +17,18 @@ public class BabySitterManager {
     private static Method[] currentMethods;
     private static WebElement webElement;
 
-    public static void isDisplayed(String pageName) throws Exception {
+    public static void messageIsDisplayed(String element) throws Exception {
+        iterateMethods(element);
+        Thread.sleep(2000);
+        Assert.assertTrue(webElement.isDisplayed());
+    }
+
+    public static void pageIsDisplayed(String pageName) throws Exception {
         System.out.println("=========IS DISPLAYED METHOD:=========" + currentPageClass);
         setCurrentPage(pageName);
         Assert.assertTrue(webElement.isDisplayed());
         Assert.assertTrue(webElement.isEnabled());
+        ScreenShotsMaker.screenshot();
     }
 
     public static void click(String cucumberWebElementName) throws Exception {
@@ -26,6 +36,11 @@ public class BabySitterManager {
         setElementName(cucumberWebElementName);
         Assert.assertTrue(webElement.isDisplayed());
         Assert.assertTrue(webElement.isEnabled());
+        Thread.sleep(2000);
+        if (!webElement.isEnabled()) {
+            JavascriptExecutor js = (JavascriptExecutor) WebDriverManager.driver;
+            js.executeScript("arguments[0].scrollIntoView();", webElement);
+        }
         webElement.click();
     }
 

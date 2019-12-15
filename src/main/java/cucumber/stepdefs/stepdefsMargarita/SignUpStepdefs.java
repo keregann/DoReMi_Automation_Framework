@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 public class SignUpStepdefs {
-    private static Logger log = Logger.getLogger(HomePageSteps.class);
+    // private static Logger log = Logger.getLogger(HomePageSteps.class);
 
     static {
 
