@@ -17,6 +17,7 @@ Feature: Login functionality
     And user clicks 'Logout'
     Then 'Login Page' is displayed
 
+  @margarita
   Scenario: Login with invalid valid credentials
     Given 'Home Page' is displayed
     When user clicks 'My Account'
@@ -27,5 +28,5 @@ Feature: Login functionality
       | email    | margarita.gabureac@mail.com |
       | password | 0123                        |
     And user clicks 'Login'
-    Then warning message is present on the page
+    Then 'warning' message is displayed
 

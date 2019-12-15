@@ -17,5 +17,8 @@ public class HomePage extends BasePage {
     private WebElement logIn;
 
     @FindBy(xpath = "//a[@class='dropdown-item tr']")
-    private WebElement singUp;
+    private WebElement signUp;
+
+    @FindBy(xpath = "//a[contains(@class,'text-center flights')]")
+    private WebElement flightsTab;
 }

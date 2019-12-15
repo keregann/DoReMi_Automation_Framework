@@ -6,9 +6,9 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        features = "src/main/resources/features/BookFlights.feature",
+        features = "src/main/resources/features/",
         glue = "cucumber/stepdefs",
-        //tags = {"@login"},
+        tags = {"@signup"},
         plugin = {"pretty", "html:test-output"}
 )
 public class TestRunner {

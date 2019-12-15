@@ -1,10 +1,11 @@
-Feature: Sing Up functionality
+Feature: Sign Up functionality
 
-  Scenario: SingUp with valid credentials
+  @signup
+  Scenario: SignUp with valid credentials
     Given 'Home Page' is displayed
     When user clicks 'My Account'
-    And user clicks 'SingUp'
-    Then 'SingUp Page' is displayed
+    And user clicks 'Sign Up'
+    Then 'Sign Up Page' is displayed
     When user enters the following values:
       | key             | Value        |
       | firstName       | Pop          |
@@ -13,7 +14,7 @@ Feature: Sing Up functionality
       | email           | dpop@mail.ru |
       | password        | 0123456      |
       | confirmPassword | 0123456      |
-    And user clicks 'Sing Up'
+    And user clicks 'Sign Up'
     Then 'User Account Page' is displayed
     When user clicks 'My Account'
     And user clicks 'Logout'
