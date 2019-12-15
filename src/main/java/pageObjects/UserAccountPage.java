@@ -8,26 +8,23 @@ import org.openqa.selenium.support.FindBy;
 public class UserAccountPage extends BasePage {
 
     @FindBy(xpath = "//h3[@class='text-align-left']")
-    WebElement userAccountPage;
-
-    @FindBy(xpath = "//div[@class='dropdown dropdown-login dropdown-tab']//a[@id='dropdownCurrency']")
-    WebElement myAccount;
+    private WebElement userAccountPage;
 
     @FindBy(xpath = "//a[@class='dropdown-item tr']")
-    WebElement logOut;
+    private WebElement logOut;
 
     @FindBy(xpath = "//a[@class='dropdown-item active tr']")
-    WebElement account;
+    private WebElement account;
 
     @FindBy(xpath = "//a[@class='nav-link go-text-right active']")
-    WebElement bookings;
+    private WebElement bookings;
 
     @FindBy(xpath = "//a[contains(text(),'My Profile')]")
-    WebElement myProfile;
+    private WebElement myProfile;
 
     @FindBy(xpath = "//a[contains(text(),'Wishlist')]")
-    WebElement wishList;
+    private WebElement wishlist;
 
     @FindBy(xpath = "//a[@class='go-text-right nav-link']")
-    WebElement newsletter;
+    private WebElement newsletter;
 }

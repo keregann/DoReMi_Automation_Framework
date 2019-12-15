@@ -8,17 +8,14 @@ import org.openqa.selenium.support.FindBy;
 public class HomePage extends BasePage {
 
     @FindBy(xpath = "//a[contains(text(),'Home')]")
-    WebElement homePage;
+    private WebElement homePage;
 
     @FindBy(xpath = "//div[@class='dropdown dropdown-login dropdown-tab']//a[@id='dropdownCurrency']")
-    WebElement myAccount;
+    private WebElement myAccount;
 
     @FindBy(xpath = "//a[@class='dropdown-item active tr']")
-    WebElement logIn;
+    private WebElement logIn;
 
     @FindBy(xpath = "//a[@class='dropdown-item tr']")
-    WebElement singUp;
-
-    @FindBy(xpath = "//a[contains(@class,'text-center flights')]")
-    WebElement flightsTab;
+    private WebElement singUp;
 }
