@@ -8,25 +8,23 @@ import org.openqa.selenium.support.FindBy;
 public class SignUpPage extends BasePage {
 
     @FindBy(xpath = "//input[@placeholder='First Name']")
-    WebElement firstName;
+    private WebElement firstName;
 
     @FindBy(xpath = "//input[@placeholder='Last Name']")
-    WebElement lastName;
+    private WebElement lastName;
 
     @FindBy(xpath = "//input[@placeholder='Mobile Number']")
-    WebElement mobileNumber;
+    private WebElement mobileNumber;
 
     @FindBy(xpath = "//input[@placeholder='Email']")
-    WebElement email;
+    private WebElement email;
 
     @FindBy(xpath = "//input[@placeholder='Password']")
-    WebElement password;
+    private WebElement password;
 
     @FindBy(xpath = "//input[@placeholder='Confirm Password']")
-    WebElement confirmPassword;
+    private WebElement confirmPassword;
 
     @FindBy(xpath = "//button[@class='signupbtn btn_full btn btn-success btn-block btn-lg']")
-    WebElement singUpButton;
-
-
+    private WebElement singUpButton;
 }
