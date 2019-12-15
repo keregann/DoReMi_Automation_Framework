@@ -1,16 +1,21 @@
 Feature: Login functionality
 
-  Scenario: Login with valid credentials
-    Given user is on the 'HomePage'
-    When user clicks 'My Account' menu
-    And user clicks 'Login' button
-    Then 'Login' Page is displayed
-    When user enters 'user@phptravels.com' as email and 'demouser' as password
-    And user clicks on 'Login' button
-    Then 'Account' Page is displayed
-    When user clicks on 'My Account' menu
-    And user clicks on 'Logout' button
-    Then user is on the 'Home Page'
+  @login
+  Scenario: Login with valid credentials(Positive flow)
+    Given 'Home Page' is displayed
+    When user clicks 'My Account'
+    And user clicks 'Login'
+    Then 'Login Page' is displayed
+    When user enters the following values:
+      | key      | value               |
+      | email    | user@phptravels.com |
+      | password | demouser            |
+
+    And user clicks 'Login'
+    Then 'User Account Page' is displayed
+    When user clicks 'My Account'
+    And user clicks 'Logout'
+    Then 'Login Page' is displayed
 
   Scenario: Login with invalid valid credentials
     Given user is on the 'Home Page'

@@ -1,10 +1,10 @@
 package pageObjects;
 
-import lombok.Data;
+import lombok.Getter;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-@Data
+@Getter
 public class HomePage extends BasePage {
 
     @FindBy(xpath = "//a[contains(text(),'Home')]")
@@ -19,25 +19,6 @@ public class HomePage extends BasePage {
     @FindBy(xpath = "//a[@class='dropdown-item tr']")
     WebElement singUp;
 
-
-    public void goToHomePage() {
-        System.out.println("Home page is displayed");
-    }
-
-
-//    public void clickMyAccount() {
-//        myAccount.click();
-//    }
-//
-//    public void clickLogin() {
-//        logIn.click();
-//    }
-//
-//    public void clickSingUp() {
-//        singUp.click();
-//    }
-//
-//    public void getHomePage() {
-//        homePage.click();
-//    }
+    @FindBy(xpath = "//a[contains(@class,'text-center flights')]")
+    WebElement flightsTab;
 }
