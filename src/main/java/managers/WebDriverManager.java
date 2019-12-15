@@ -32,8 +32,9 @@ public class WebDriverManager {
                 driver = new InternetExplorerDriver();
                 break;
         }
-        driver.get(FileReaderManager.getInstance().getConfigReader().getApplicationUrl());
         driver.manage().window().maximize();
+        driver.manage().deleteAllCookies();
+        driver.get(FileReaderManager.getInstance().getConfigReader().getApplicationUrl());
         driver.manage().timeouts().implicitlyWait(FileReaderManager.getInstance().getConfigReader().getImplicitlyWait(), TimeUnit.SECONDS);
         return driver;
     }

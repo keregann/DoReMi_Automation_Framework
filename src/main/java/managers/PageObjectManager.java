@@ -1,6 +1,7 @@
 package managers;
 
 import org.openqa.selenium.WebDriver;
+import pageObjects.BasePage;
 import pageObjects.HomePage;
 import pageObjects.LoginPage;
 import pageObjects.SignUpPage;
@@ -9,6 +10,7 @@ import pageObjects.UserAccountPage;
 public class PageObjectManager {
     private WebDriver driver;
 
+    private BasePage basePage;
     private HomePage homePage;
     private LoginPage loginPage;
     private UserAccountPage userAccountPage;
@@ -33,4 +35,8 @@ public class PageObjectManager {
     public SignUpPage getSignUpPage() {
         return (signUpPage == null) ? signUpPage = new SignUpPage() : signUpPage;
     }
+    public BasePage getBasePage() {//Base page abstract
+        return (basePage == null) ? basePage = new BasePage() : basePage;
+    }
+
 }
