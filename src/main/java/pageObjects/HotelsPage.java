@@ -1,16 +1,18 @@
 package pageObjects;
 
+import lombok.Getter;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.List;
+
+@Getter
 public class HotelsPage extends BasePage {
-    //first in list
-    @FindBy(xpath = "//li[1]//div[1]//div[1]//div[2]//div[1]//div[3]//div[1]//div[2]//form[1]//button[1]")
+
+    @FindBy(xpath = "//div[@id='listing']//li[*]]")
+    private List<WebElement> hotels;
+    //first in list >> need to make list (//li[*]//button[contains(text(),'Details')])
+    @FindBy(xpath = "//li[1]//button[contains(text(),'Details')]")
     private WebElement detailsButton;
 
-    //must to implement to choose from list by name
-    public HotelsPage clickSeeHotelDetails() {
-        detailsButton.click();
-        return this;
-    }
 }
