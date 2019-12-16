@@ -1,6 +1,5 @@
 package pageObjects;
 
-import lombok.Data;
 import lombok.Getter;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -27,8 +26,11 @@ public class SignUpPage extends BasePage {
     private WebElement password;
 
     @FindBy(xpath = "//input[@placeholder='Confirm Password']")
-    private WebElement confirmPassword;
+    private WebElement confirm;
 
-    @FindBy(xpath = "//button[@class='signupbtn btn_full btn btn-success btn-block btn-lg']")
+    @FindBy(xpath = "/html[1]/body[1]/div[2]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/form[1]/div[9]/button[1]")
     private WebElement signUp;
+
+    @FindBy(xpath = "/html[1]/body[1]/div[2]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/form[1]/div[2]/div[1]/p[1]")
+    private WebElement warning;
 }
