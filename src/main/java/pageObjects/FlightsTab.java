@@ -3,12 +3,11 @@ package pageObjects;
 import lombok.Getter;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pageObjects.BasePage;
 
 @Getter
 public class FlightsTab extends BasePage {
 
-    @FindBy(xpath = "//label[contains(text(),'Round Trip')]")
+    @FindBy(xpath = "//label[contains(text(),'One Way')]")
     WebElement flightsTab;
 
     @FindBy(xpath = "//label[contains(text(),'One Way')]")
@@ -61,4 +60,8 @@ public class FlightsTab extends BasePage {
 
     @FindBy(xpath = "//div[@class='col-xs-12 col-md-1']//button[@class='btn-primary btn btn-block'][contains(text(),'Search')]")
     WebElement searchButton;
+
+
 }
+
+

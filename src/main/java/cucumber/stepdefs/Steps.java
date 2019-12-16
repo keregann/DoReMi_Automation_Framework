@@ -1,13 +1,15 @@
 package cucumber.stepdefs;
 
 import cucumber.api.DataTable;
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import managers.BabySitterManager;
 
-public class Steps {
+import java.util.Date;
 
+public class Steps {
 
     @Given("^'(.*)' is displayed$") //HomePage
     public void pageIsDisplayed(String pageName) throws Exception {
@@ -24,8 +26,13 @@ public class Steps {
         BabySitterManager.enterData(table);
     }
 
-    @Then("^(.*) message is displayed$")
+    @Then("^'(.*)' message is displayed$")
     public void warningMessageIsDisplayed(String element) throws Exception {
         BabySitterManager.messageIsDisplayed(element);
+    }
+
+    @And("^sets the following date:$")
+    public void setsTheFollowingDate(Date date) {
+        BabySitterManager.setDate(date);
     }
 }

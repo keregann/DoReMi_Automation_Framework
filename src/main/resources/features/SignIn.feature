@@ -1,7 +1,7 @@
 Feature: Login functionality
 
-  @login
-  Scenario: Login with valid credentials(Positive flow)
+  @margo@login
+  Scenario: Login with valid credentials
     Given 'Home Page' is displayed
     When user clicks 'My Account'
     And user clicks 'Login'
@@ -17,7 +17,7 @@ Feature: Login functionality
     And user clicks 'Logout'
     Then 'Login Page' is displayed
 
-  @margarita
+  @margo
   Scenario: Login with invalid valid credentials
     Given 'Home Page' is displayed
     When user clicks 'My Account'

@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -20,6 +21,7 @@ public class ScreenShotsMaker {
     private static int counter = 1;
     private static Path screenShotPath;
     private static String scenarioName;
+
     //screenshot method : used for making screenshots
     public static void screenshot() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("hh_mm_ss_dd_MM_yy");
@@ -35,7 +37,8 @@ public class ScreenShotsMaker {
 
     public static void makeDir(String name) {
         String pathString = "src/main/resources/screenShots/";
-        Path path = Paths.get(pathString + "scenario" + "_" + (counter++) + "_" + name);
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy-hh-mm-ss");
+        Path path = Paths.get(pathString + "scenario" + "_" + (counter++) + "_" + name + dateFormat.toString());
         if (!Files.exists(path)) {
             try {
                 screenShotPath = Files.createDirectories(path);
