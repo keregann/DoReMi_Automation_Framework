@@ -6,6 +6,7 @@ import org.openqa.selenium.support.FindBy;
 
 @Getter
 public class UserAccountPage extends BasePage {
+    private final String url = "https://www.phptravels.net/index.php";
 
     @FindBy(xpath = "//h3[@class='text-align-left']")
     private WebElement userAccountPage;
@@ -33,6 +34,5 @@ public class UserAccountPage extends BasePage {
 
     @FindBy(xpath = "//a[contains(text(),'Hotels')]")
     private WebElement hotels;
-
 
 }

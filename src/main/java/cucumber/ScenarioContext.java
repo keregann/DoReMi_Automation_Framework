@@ -24,5 +24,12 @@ public class ScenarioContext {
     public Boolean isContains(Context key) {
         return scenarioContext.containsKey(key.toString());
     }
-
 }
+
+//Babysitter kill
+//Waiters implicit
+//Asserts la final, assertThat(hamcrest)
+//Pageobjects - > pageAccessor(findBy page)
+//Rename variables, descriptive
+//Move logs to /target folder
+//Set global variable

@@ -11,7 +11,7 @@ Feature: Sign Up functionality
       | firstName       | Pop          |
       | lastName        | Diana        |
       | mobileNumber    | 06521347     |
-      | email        | fasii87@mail.ru |
+      | email        | fgioergk7@mail.ru |
       | password        | 0123456      |
       | confirm      | 0123456         |
     And user clicks 'Sign Up'

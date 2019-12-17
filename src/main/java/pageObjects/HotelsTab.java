@@ -9,6 +9,7 @@ import org.openqa.selenium.support.FindBy;
 
 @Getter
 public class HotelsTab extends BasePage {
+    private final String url = "https://www.phptravels.net/index.php";
     private WebDriver driver = WebDriverManager.driver;
     ;
 

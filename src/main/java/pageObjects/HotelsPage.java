@@ -9,6 +9,7 @@ import java.util.List;
 @Getter
 public class HotelsPage extends BasePage {
 
+    private final String url = "https://www.phptravels.net/index.php";
     @FindBy(xpath = "//div[@id='listing']//li[*]]")
     private List<WebElement> hotels;
     //first in list >> need to make list (//li[*]//button[contains(text(),'Details')])

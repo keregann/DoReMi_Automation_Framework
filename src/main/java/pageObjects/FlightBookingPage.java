@@ -74,40 +74,40 @@
 //    @FindBy(xpath = "//button[@id='confirmBooking']")
 //    WebElement confirmBtn;
 //
-//    JavascriptExecutor js = (JavascriptExecutor) driver;
-//
-//    public FlightBookingPage enterData() throws InterruptedException {
-//        js.executeScript("window.scrollBy(0,200)");
-//        titleDropDown.click();
-//        Thread.sleep(500);
-//        titleOption.click();
-//        nameField.sendKeys("Alex");
-//        surnameField.sendKeys("Fasii");
-//        emailField.sendKeys("user@phptravels.com");
-//        phoneField.sendKeys("+37379371306");
-//        birthdayField.sendKeys("1990-01-01");
-//        passportField.sendKeys("85694123");
-//        expirationPassportDate.sendKeys("2020-01-01");
-//        nationalityDropDown.click();
-//        Thread.sleep(500);
-//        nationalityOption.click();
-//
-//        js.executeScript("window.scrollBy(0,500)");
-//        Thread.sleep(2000);
-//
-//
-//        //Payments
-//        cardTypeDropDown.click();
-//        cardTypeOption.click();
-//        cardNumber.sendKeys("4562359867451234");
-//        cardExpirationMonth.click();
-//        cardExpirationMonthOption.click();
-//        cardExpirationYear.click();
-//        cardExpirationYearOption.click();
-//        cvvField.sendKeys("965");
-//        acceptRulesCheckBox.click();
-//        confirmBtn.click();
-//
-//        return this;
-//    }
+////    JavascriptExecutor js = (JavascriptExecutor) driver;
+////
+////    public FlightBookingPage enterData() throws InterruptedException {
+////        js.executeScript("window.scrollBy(0,200)");
+////        titleDropDown.click();
+////        Thread.sleep(500);
+////        titleOption.click();
+////        nameField.sendKeys("Alex");
+////        surnameField.sendKeys("Fasii");
+////        emailField.sendKeys("user@phptravels.com");
+////        phoneField.sendKeys("+37379371306");
+////        birthdayField.sendKeys("1990-01-01");
+////        passportField.sendKeys("85694123");
+////        expirationPassportDate.sendKeys("2020-01-01");
+////        nationalityDropDown.click();
+////        Thread.sleep(500);
+////        nationalityOption.click();
+////
+////        js.executeScript("window.scrollBy(0,500)");
+////        Thread.sleep(2000);
+////
+////
+////        //Payments
+////        cardTypeDropDown.click();
+////        cardTypeOption.click();
+////        cardNumber.sendKeys("4562359867451234");
+////        cardExpirationMonth.click();
+////        cardExpirationMonthOption.click();
+////        cardExpirationYear.click();
+////        cardExpirationYearOption.click();
+////        cvvField.sendKeys("965");
+////        acceptRulesCheckBox.click();
+////        confirmBtn.click();
+////
+////        return this;
+////    }
 //}

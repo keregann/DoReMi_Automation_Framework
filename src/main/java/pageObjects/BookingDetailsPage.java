@@ -9,6 +9,7 @@ import org.openqa.selenium.support.FindBy;
 
 @Getter
 public class BookingDetailsPage extends BasePage {
+    private final String url = "k";
     private WebDriver driver = WebDriverManager.driver;
 
     @FindBy(xpath = "//select[@id='title']")

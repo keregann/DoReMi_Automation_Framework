@@ -6,6 +6,7 @@ import org.openqa.selenium.support.FindBy;
 
 @Getter
 public class FlightsResultsPage extends BasePage {
+    private final String url = "https://www.phptravels.net/index.php";
 
     @FindBy(xpath = "//button[@class='btn btn-secondary btn-wide btn-toggle collapsed btn-sm btn-change-search']")
     WebElement flightsResultsPage;

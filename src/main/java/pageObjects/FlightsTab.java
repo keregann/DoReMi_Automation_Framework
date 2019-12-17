@@ -1,11 +1,17 @@
 package pageObjects;
 
 import lombok.Getter;
+import managers.WebDriverManager;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.Date;
+
 @Getter
 public class FlightsTab extends BasePage {
+    private final String url = "https://www.phptravels.net/index.php";
 
     @FindBy(xpath = "//label[contains(text(),'One Way')]")
     WebElement flightsTab;
@@ -61,6 +67,12 @@ public class FlightsTab extends BasePage {
     @FindBy(xpath = "//div[@class='col-xs-12 col-md-1']//button[@class='btn-primary btn btn-block'][contains(text(),'Search')]")
     WebElement searchButton;
 
+
+    public void setDepartCalendarDate() {
+        departCalendar.click();
+        WebDriverManager.driver.findElement(By.xpath("//div[7]//div[1]//div[1]//div[2]//div[17]")).click();
+
+    }
 
 }
 
