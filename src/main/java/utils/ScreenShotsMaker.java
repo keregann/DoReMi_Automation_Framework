@@ -18,7 +18,7 @@ import java.time.format.DateTimeFormatter;
 public class ScreenShotsMaker {
 
     private static String pathString = "target/screenShots/";
-    private static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("hh_mm_ss_dd_MM_yy");
+    private static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("hh_mm_ss dd_MM_yy");
     private static int counter = 1;
     private static Path screenShotPath;
     private static String scenarioName;
