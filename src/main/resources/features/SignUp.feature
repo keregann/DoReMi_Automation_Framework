@@ -5,36 +5,36 @@ Feature: Sign Up functionality
     Given 'Home Page' Page is displayed
     When user clicks 'My Account'
     And user clicks 'Sign Up'
-    Then 'Sign Up Page' is displayed
+    Then 'Sign Up' Page is displayed
     When user enters the following values:
-      | key          | value           |
-      | firstName       | Pop          |
-      | lastName        | Diana        |
-      | mobileNumber    | 06521347     |
-      | email        | fgioergk7@mail.ru |
-      | password        | 0123456      |
-      | confirm      | 0123456         |
+      | key          | value            |
+      | firstName    | Pop              |
+      | lastName     | Diana            |
+      | mobileNumber | 06521347         |
+      | email        | fgcvdqaz@mail.ru |
+      | password     | 0123456          |
+      | confirm      | 0123456          |
     And user clicks 'Sign Up'
-    Then 'User Account Page' is displayed
+    Then 'User Account' Page is displayed
     When user clicks 'My Account'
     And user clicks 'Logout'
-    Then 'Login Page' is displayed
+    Then 'Login' Page is displayed
 
   @margo
   Scenario: Validate all fields on Sing Up page
-    Given 'Home Page' is displayed
+    Given 'Home' Page is displayed
     When user clicks 'My Account'
     And user clicks 'Sign Up'
-    Then 'Sign Up Page' is displayed
+    Then 'Sign Up' Page is displayed
     When user clicks 'Sign Up'
     Then 'warning' message is displayed
 
   @margo
   Scenario: Validate the connection between "Password" and "Confirm Password"
-    Given 'Home Page' is displayed
+    Given 'Home' Page is displayed
     When user clicks 'My Account'
     And user clicks 'Sign Up'
-    Then 'Sign Up Page' is displayed
+    Then 'Sign Up' Page is displayed
     When user enters the following values:
       | key      | value  |
       | password | 123654 |
@@ -44,19 +44,21 @@ Feature: Sign Up functionality
 
 
   Scenario Outline: Validate Email and Password fields on Sing Up page
-    Given 'Home Page' is displayed
+    Given 'Home' Page is displayed
     When user clicks 'My Account'
     And user clicks 'SingUp'
-    Then 'SingUp Page' is displayed
-    When user enters  in <field_name> the <value> invalid data
+    Then 'SingUp' Page is displayed
+    When user enters the following values:
+      | key   | value   |
+      | <key> | <value> |
     And user clicks 'Sing Up'
     Then warning message is present on the page
 
     Examples:
-      | field_name | value                                                                 |
-      | Password   | 12345                                                                 |
-      | Email      | adsdsdc.com                                                           |
-      | Email      | addc@xds                                                              |
-      | Email      | axdfvgsxsdfdcxzswesdssaxzaswxdssxssawedsssxazwedwsawedsaswsdaqwsd@e.c |
+      | key      | value                                                                 |
+      | Password | 12345                                                                 |
+      | Email    | adsdsdc.com                                                           |
+      | Email    | addc@xds                                                              |
+      | Email    | axdfvgsxsdfdcxzswesdssaxzaswxdssxssawedsssxazwedwsawedsaswsdaqwsd@e.c |
 
 
