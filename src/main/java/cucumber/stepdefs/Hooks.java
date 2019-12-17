@@ -21,14 +21,14 @@ public class Hooks {
 
     @Before
     public void BeforeSteps(Scenario scenario) {
-        log.info("Start of scenario");
+        log.info("-----Start of scenario-----");
         WebDriverManager.createDriver();
-        // ScreenShotsMaker.makeDir(scenario.getName());
+        //ScreenShotsMaker.makeDir(scenario.getName());
     }
 
     @After
     public void AfterSteps() {
-        log.info("End of scenario");
+        log.info("-----End of scenario-----");
         WebDriverManager.closeDriver();
     }
 }
