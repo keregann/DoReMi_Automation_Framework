@@ -12,7 +12,7 @@ Feature:
       | to   | Kiev     |
 
     And sets the following date:
-      | date | 2019-12-17 |
+#      | date | 2019-12-17 |
 
     And user clicks 'Search Button'
     Then 'Flights Results Page' is displayed

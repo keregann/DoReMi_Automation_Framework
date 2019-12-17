@@ -6,6 +6,7 @@ import org.openqa.selenium.support.FindBy;
 
 @Getter
 public class HotelDetailsPage extends BasePage {
+    private final String url = "https://www.phptravels.net/index.php";
 
     @FindBy(xpath = "//a[text() = 'See price and date']")
     private WebElement seePriceAndDate;

@@ -6,12 +6,8 @@ import org.openqa.selenium.support.FindBy;
 
 @Data
 public class MyProfilePage extends BasePage {
+    private final String url = "https://www.phptravels.net/index.php";
 
-    /* is immutable fields
-     @FindBy(xpath = "//input[@placeholder='First Name']")
-     WebElement firstName;
-     @FindBy(xpath = "//input[@placeholder='Last Name']")
-     WebElement lastName;*/
     @FindBy(xpath = "//input[@placeholder='Phone']")
     WebElement phone;
 

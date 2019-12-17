@@ -6,9 +6,8 @@ import org.openqa.selenium.support.FindBy;
 
 @Getter
 public class LoginPage extends BasePage {
-
-    @FindBy(xpath = "//a[@class='collapse-link']")
-    private WebElement loginPage;
+    private final String url = "https://www.phptravels.net/login";
+    ;
 
     @FindBy(xpath = "//input[@placeholder='Email']")
     private WebElement email;
@@ -20,7 +19,7 @@ public class LoginPage extends BasePage {
     private WebElement checkBoxRememberMe;
 
     @FindBy(xpath = "//button[@class='btn btn-primary btn-lg btn-block loginbtn']")
-    private WebElement login;
+    private WebElement loginButton;
 
     @FindBy(xpath = "//a[@class='btn btn-success br25 btn-block form-group']")
     private WebElement singUpButton;
@@ -30,4 +29,5 @@ public class LoginPage extends BasePage {
 
     @FindBy(xpath = "//div[@class='alert alert-danger']")
     private WebElement warning;
+
 }

@@ -6,6 +6,7 @@ import org.openqa.selenium.support.FindBy;
 
 @Getter
 public class UserAccountPage extends BasePage {
+    private final String url = "https://www.phptravels.net/index.php";
 
     @FindBy(xpath = "//h3[@class='text-align-left']")
     private WebElement userAccountPage;
@@ -28,6 +29,6 @@ public class UserAccountPage extends BasePage {
     @FindBy(xpath = "//a[@class='go-text-right nav-link']")
     private WebElement newsletter;
 
-    @FindBy(xpath = "/html[1]/body[1]/div[2]/header[1]/div[1]/div[1]/div[1]/div[2]/div[1]/ul[1]/li[3]/div[1]/a[1]")
-    private WebElement myAccount;
+//    @FindBy(xpath = "/html[1]/body[1]/div[2]/header[1]/div[1]/div[1]/div[1]/div[2]/div[1]/ul[1]/li[3]/div[1]/a[1]")
+//    private WebElement myAccount;
 }

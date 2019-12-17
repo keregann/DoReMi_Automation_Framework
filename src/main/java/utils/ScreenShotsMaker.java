@@ -52,6 +52,5 @@ public class ScreenShotsMaker {
     public static void cleanDir() throws IOException {
         FileUtils.cleanDirectory(FileUtils.getFile(pathString));
     }
-
 }
 
