@@ -11,34 +11,30 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class ScreenShotsMaker {
-    //for review
-    private static String pathString = "src/main/resources/screenShots/";
+
+    private static String pathString = "target/screenShots/";
+    private static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("hh_mm_ss_dd_MM_yy");
     private static int counter = 1;
     private static Path screenShotPath;
     private static String scenarioName;
-
     //screenshot method : used for making screenshots
     public static void screenshot() {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("hh_mm_ss_dd_MM_yy");
-        String fileName = formatter.format(LocalDateTime.now()) + ".png";
-
+        String fileName = scenarioName + "_" + (formatter.format(LocalDateTime.now())) + ".png";
         File screenshot = ((TakesScreenshot) WebDriverManager.driver).getScreenshotAs(OutputType.FILE);
         try {
-            FileHandler.copy(screenshot, new File(screenShotPath + "/" + scenarioName + "_" + fileName));
+            FileHandler.copy(screenshot, new File(screenShotPath + "/" + fileName));
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     public static void makeDir(String name) {
-        String pathString = "src/main/resources/screenShots/";
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy-hh-mm-ss");
-        Path path = Paths.get(pathString + "scenario" + "_" + (counter++) + "_" + name + dateFormat.toString());
+        //  String pathString = "src/main/resources/screenShots/";
+        Path path = Paths.get(pathString + "scenario" + "_" + (counter++) + "_" + name + "_" + (formatter.format(LocalDateTime.now())));
         if (!Files.exists(path)) {
             try {
                 screenShotPath = Files.createDirectories(path);
