@@ -1,6 +1,5 @@
 package cucumber;
 
-import managers.Reflection;
 import managers.WebDriverManager;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
@@ -10,12 +9,12 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import static managers.Reflection.getWebElement;
+import static managers.ReflectionManager.getWebElement;
 import static utils.DrawBorder.drawBorder;
 
 
 public class Actions {
-    private static Logger log = Logger.getLogger(Reflection.class);
+    private static Logger log = Logger.getLogger(Actions.class);
     private static WebDriver driver = WebDriverManager.driver;
     private WebDriverWait wait;
 
