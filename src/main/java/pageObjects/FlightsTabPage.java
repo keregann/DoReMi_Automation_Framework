@@ -3,14 +3,13 @@ package pageObjects;
 import lombok.Getter;
 import managers.WebDriverManager;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.Date;
 
 @Getter
-public class FlightsTab extends BasePage {
+public class FlightsTabPage extends BasePage {
     private final String url = "https://www.phptravels.net/index.php";
 
     @FindBy(xpath = "//label[contains(text(),'One Way')]")

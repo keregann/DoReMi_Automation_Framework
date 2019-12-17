@@ -14,7 +14,8 @@ public class ReflectionManager {
     private static Method[] currentPageMethods;
     private static Logger log = Logger.getLogger(ReflectionManager.class);
 
-    public static void pageInit(String pageName) throws Exception {
+    public static Boolean pageInit(String pageName) throws Exception {
+        boolean isInitialized = false;
         try {
             currentPageClass = Class.forName("pageObjects." + pageName + "Page");
         } catch (ClassNotFoundException exception) {
@@ -24,14 +25,16 @@ public class ReflectionManager {
 
         try {
             BasePage basePage = (BasePage) currentPageClass.newInstance();
-            if (WebDriverManager.driver.getCurrentUrl().matches(basePage.getUrl())) {
+            if (WebDriverManager.driver.getCurrentUrl().equalsIgnoreCase(basePage.getUrl())) {
                 currentPageMethods = currentPageClass.getDeclaredMethods();
+                isInitialized = true;
                 log.info(currentPageClass + " is initialized");
             }
         } catch (InstantiationException exception) {
             exception.printStackTrace();
             log.error("Error: " + exception);
         }
+        return isInitialized;
     }
 
     public static WebElement getWebElement(String element) throws Exception {
