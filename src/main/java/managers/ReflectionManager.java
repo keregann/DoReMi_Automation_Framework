@@ -17,17 +17,20 @@ public class ReflectionManager {
     public static void pageInit(String pageName) throws Exception {
         try {
             currentPageClass = Class.forName("pageObjects." + pageName + "Page");
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+        } catch (ClassNotFoundException exception) {
+            exception.printStackTrace();
+            log.error("Error: " + exception);
         }
+
         try {
             BasePage basePage = (BasePage) currentPageClass.newInstance();
             if (WebDriverManager.driver.getCurrentUrl().matches(basePage.getUrl())) {
                 currentPageMethods = currentPageClass.getDeclaredMethods();
                 log.info(currentPageClass + " is initialized");
             }
-        } catch (InstantiationException e) {
-            e.printStackTrace();
+        } catch (InstantiationException exception) {
+            exception.printStackTrace();
+            log.error("Error: " + exception);
         }
     }
 
@@ -39,8 +42,9 @@ public class ReflectionManager {
                     webElement = (WebElement) method.invoke(currentPageClass.newInstance());
                 }
             }
-        } catch (IllegalArgumentException | InvocationTargetException e) {
-            e.printStackTrace();
+        } catch (IllegalArgumentException | InvocationTargetException exception) {
+            exception.printStackTrace();
+            log.error(exception);
         }
         return webElement;
     }

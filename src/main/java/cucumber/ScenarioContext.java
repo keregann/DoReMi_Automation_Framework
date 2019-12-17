@@ -1,9 +1,9 @@
 package cucumber;
 
+import enums.Context;
+
 import java.util.HashMap;
 import java.util.Map;
-
-import enums.Context;
 
 public class ScenarioContext {
 
@@ -32,4 +32,4 @@ public class ScenarioContext {
 //Pageobjects - > pageAccessor(findBy page)
 //Rename variables, descriptive
 //Move logs to /target folder
-//Set global variable
+//Set global variable pageObjects.
