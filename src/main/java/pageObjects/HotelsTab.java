@@ -14,16 +14,16 @@ public class HotelsTab extends BasePage {
     ;
 
     @FindBy(xpath = "//a[@href='#hotels']")
-    private WebElement hotelsBooking;
+    private WebElement hotels;
 
     @FindBy(xpath = "//input[@id='s2id_autogen2']")
-    private WebElement destinationField;
+    private WebElement destination;
 
     @FindBy(xpath = "//input[@id='checkin']")
-    private WebElement checkInDate;
+    private WebElement checkIn;
 
     @FindBy(xpath = "//input[@id='checkout']")
-    private WebElement checkOutDate;
+    private WebElement checkOut;
 
     @FindBy(xpath = "//div[contains(@class,'col o2')]//div[contains(@class,'bootstrap-touchspin bootstrap-touchspin-injected')]")
     private WebElement adultsAmount;
