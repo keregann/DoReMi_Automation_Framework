@@ -30,4 +30,9 @@ public class UserAccountPage extends BasePage {
 
     @FindBy(xpath = "/html[1]/body[1]/div[2]/header[1]/div[1]/div[1]/div[1]/div[2]/div[1]/ul[1]/li[3]/div[1]/a[1]")
     private WebElement myAccount;
+
+    @FindBy(xpath = "//a[contains(text(),'Hotels')]")
+    private WebElement hotels;
+
+
 }

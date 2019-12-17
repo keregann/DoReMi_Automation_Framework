@@ -1,6 +1,7 @@
 Feature:User book hotel
 
 #Scenario 1
+  @book_hotel_happy_flow
   Scenario:User book hotel
     Given 'Home Page' is displayed
     When user clicks 'My Account'
@@ -14,7 +15,7 @@ Feature:User book hotel
     Then 'User Account Page' is displayed
     When user clicks 'Hotels'
     Then 'Hotels Tab' is displayed
-    When user enters the following values:
+    When user enters in 'Hotels Tab' the following values:
       | key         | value    |
       | destination | Chisinau |
       | checkIn     | 20       |
