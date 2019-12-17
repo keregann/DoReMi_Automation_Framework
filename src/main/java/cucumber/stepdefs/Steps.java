@@ -2,7 +2,7 @@ package cucumber.stepdefs;
 
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.When;
-import managers.Reflection;
+import managers.ReflectionManager;
 
 
 public class Steps {
@@ -11,7 +11,7 @@ public class Steps {
     @Given("^'(.*)' Page is displayed$")
     public void pageIsDisplayed(String pageName) throws Exception {
         //MyAssertions.isDisplayed();
-        Reflection.pageInit(pageName);
+        ReflectionManager.pageInit(pageName);
     }
 
     @When("^user clicks '(.*)'$")

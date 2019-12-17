@@ -2,7 +2,7 @@ Feature: Sign Up functionality
 
   @margo
   Scenario: SignUp with valid credentials
-    Given 'Home Page' is displayed
+    Given 'Home Page' Page is displayed
     When user clicks 'My Account'
     And user clicks 'Sign Up'
     Then 'Sign Up Page' is displayed
