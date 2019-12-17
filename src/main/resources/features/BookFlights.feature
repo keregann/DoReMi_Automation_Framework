@@ -2,9 +2,9 @@ Feature:
 
   @sasha
   Scenario: Book a flight
-    Given 'Home Page' is displayed
+    Given 'Home' Page is displayed
     When user clicks 'Flights Tab'
-    Then 'Flights Tab' is displayed
+    Then 'FlightsTab' Page is displayed
     When user clicks 'One Way Button'
     When user enters the following values:
       | key  | value    |
@@ -15,7 +15,7 @@ Feature:
 #      | date | 2019-12-17 |
 
     And user clicks 'Search Button'
-    Then 'Flights Results Page' is displayed
+    Then 'Flights Results' Page is displayed
 
 
 #  Scenario: 2
