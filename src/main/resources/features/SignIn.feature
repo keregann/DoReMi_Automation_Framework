@@ -1,6 +1,6 @@
 Feature: Login functionality
 
-  @margo
+  @margo@login
   Scenario: Login with valid credentials
     Given 'Home' Page is displayed
     When user clicks 'My Account'
