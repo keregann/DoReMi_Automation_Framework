@@ -2,7 +2,6 @@ package pageObjects;
 
 import lombok.Getter;
 import managers.WebDriverManager;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -29,44 +28,30 @@ public class HotelsTab extends BasePage {
     private WebElement adultsAmount;
 
     @FindBy(xpath = "//div[contains(@class,'col o2')]//button[text() ='+']")
-    private WebElement addAdultdButton;
+    private WebElement addAdult;
 
     @FindBy(xpath = "//div[contains(@class,'col o2')]//button[text() ='-']")
-    private WebElement substractAdultButton;
+    private WebElement substractAdult;
 
     @FindBy(xpath = "//div[contains(@class,'col o1')]//div[contains(@class,'bootstrap-touchspin bootstrap-touchspin-injected')]")
     private WebElement childAmount;
 
     @FindBy(xpath = "//div[contains(@class,'col 01')]//button[text() ='+']")
-    private WebElement addChildButton;
+    private WebElement addChild;
 
     @FindBy(xpath = "//div[contains(@class,'col 01')]//button[text() ='-']")
-    private WebElement substractChildButton;
+    private WebElement substractChild;
 
     @FindBy(xpath = "//div[contains(@class,'col-md-2 col-xs-12 o1')]//button[contains(@type,'submit')][contains(text(), 'Search')]")
-    private WebElement searchButton;
-
-    public void inputDropDown(WebElement element, String value) throws InterruptedException {
-        element.sendKeys(value);
-        WebElement foundElement = driver.findElement(By.xpath("//div//span[contains(text(),'" + value + "')]"));
-        foundElement.click();
-    }
-
-    //must be developed
-    public void inputDate(WebElement element, String day) throws InterruptedException {
-        element.click(); //can be send outside
-        WebElement dayElem = driver.findElement(By.xpath("//div[@id='datepickers-container']//div[2]//div[1]//div[1]//div[2]//div[text()='" + day + "']"));
-        dayElem.click();
-    }
-
+    private WebElement search;
 
     public void setAdultsAmount(String amount) {
         int temp = Integer.parseInt(amount);
         if (temp == 1) {
-            substractAdultButton.click();
+            substractAdult.click();
         } else if (temp > 2) {
             for (int i = 3; i <= temp; i++) {
-                addAdultdButton.click();
+                addAdult.click();
             }
         }
     }
@@ -74,7 +59,7 @@ public class HotelsTab extends BasePage {
     public void setChildAmount(String amount) {
         int temp = Integer.parseInt(amount);
         for (int i = 1; i <= temp; i++) {
-            addChildButton.click();
+            addChild.click();
         }
     }
 }

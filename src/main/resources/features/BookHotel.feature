@@ -1,35 +1,32 @@
 Feature:User book hotel
 
 #Scenario 1
-  @book_hotel_happy_flow
+  @Ion
   Scenario:User book hotel
-    Given 'Home Page' is displayed
+    Given 'Home' page is displayed
     When user clicks 'My Account'
-    And user clicks 'Login'
-    Then 'Login Page' is displayed
+    And user clicks 'Login Button'
+    Then 'Login' page is displayed
     When user enters the following values:
-      | key      | value               |
       | email    | user@phptravels.com |
       | password | demouser            |
-    And user clicks 'Login'
-    Then 'User Account Page' is displayed
+    And user clicks 'Login Button'
+    Then 'User Account' page is displayed
     When user clicks 'Hotels'
     Then 'Hotels Tab' is displayed
-    When user enters in 'Hotels Tab' the following values:
-      | key         | value    |
+    When user enters in Hotels Tab the following values:
       | destination | Chisinau |
       | checkIn     | 20       |
       | checkOut    | 22       |
       | adults      | 2        |
-      | child       | 1        |
+      | child       | 0        |
     And user clicks 'Search Hotel Button'
-    Then 'Hotels Page' is displayed
+    Then 'Hotels' page is displayed
     When user clicks 'Details Button'
     And user clicks 'See Price and Date Button'
     And user clicks 'Book Hotel Button'
-    Then 'Payment Page' is displayed
+    Then 'Payment' page is displayed
     When user enters the following values:
-      | key        | value              |
       | title      | Mr                 |
       | first name | Ion                |
       | last name  | Drone              |
@@ -37,7 +34,7 @@ Feature:User book hotel
       | email      | ion.drone@mail.com |
       | phone      | 06868686868        |
     And user clicks 'Complete Booking Button'
-    Then 'Hotel Booking Purchase Page' is displayed
+    Then 'Hotel Booking Purchase' page is displayed
 
 
 ##Scenario 2
