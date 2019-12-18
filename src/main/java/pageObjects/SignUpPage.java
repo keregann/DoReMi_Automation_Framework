@@ -6,7 +6,7 @@ import org.openqa.selenium.support.FindBy;
 
 @Getter
 public class SignUpPage extends BasePage {
-    private final String url = "https://www.phptravels.net/index.php";
+    private final String url = "https://www.phptravels.net/register";
 
     @FindBy(xpath = "//a[@class='collapse-link']")
     private WebElement signUpPage;

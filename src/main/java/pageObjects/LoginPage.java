@@ -7,7 +7,6 @@ import org.openqa.selenium.support.FindBy;
 @Getter
 public class LoginPage extends BasePage {
     private final String url = "https://www.phptravels.net/login";
-    ;
 
     @FindBy(xpath = "//input[@placeholder='Email']")
     private WebElement email;
