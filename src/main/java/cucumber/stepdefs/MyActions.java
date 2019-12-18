@@ -8,7 +8,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import utils.ScreenShotsMaker;
 
 public class MyActions {
     private static Logger log = Logger.getLogger(MyActions.class);
@@ -20,7 +19,7 @@ public class MyActions {
         wait = new WebDriverWait(WebDriverManager.driver, 5);
     }
 
-    public void click(String element) throws Exception {
+    public void click(String element) {
         WebElement webElement = ReflectionManager.getWebElement(element.replace(" ", ""));
         actions.moveToElement(webElement);
         drawBorder(webElement);

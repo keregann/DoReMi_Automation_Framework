@@ -2,9 +2,9 @@ Feature:
 
   @sasha
   Scenario: Book a flight
-    Given 'Home' Page is displayed
+    Given 'Home' page is displayed
     When user clicks 'Flights Tab'
-    Then 'FlightsTab' Page is displayed
+    Then 'FlightsTab' page is displayed
     When user clicks 'One Way Button'
     When user enters the following values:
       | key  | value    |

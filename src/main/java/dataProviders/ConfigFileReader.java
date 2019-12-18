@@ -4,7 +4,6 @@ import enums.DriverType;
 import org.apache.log4j.Logger;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Properties;
@@ -12,27 +11,18 @@ import java.util.Properties;
 
 public class ConfigFileReader {
     private final String propertyFilePath = "src/main/resources/application.properties";
-    private Properties properties;
+    private static Properties properties;
     private static ConfigFileReader configFileReader = new ConfigFileReader();
     private static Logger log = Logger.getLogger(ConfigFileReader.class);
 
     public ConfigFileReader() {
-        BufferedReader reader;
-        try {
-            reader = new BufferedReader(new FileReader(propertyFilePath));// reads the property file
-            properties = new Properties();// creates a new Properties object
-            try {
-                properties.load(reader);// pushes the property file into it
-                reader.close();
-            } catch (IOException exception) {
-                exception.printStackTrace();
-                log.error("Error: " + exception);
-            }
-        } catch (FileNotFoundException exception) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(propertyFilePath))) {
+            properties = new Properties();
+            properties.load(reader);
+        } catch (IOException exception) {
             exception.printStackTrace();
+            log.error("Error throw: application.properties not found at " + propertyFilePath);
             log.error("Error catched: " + exception);
-            log.error("Error throw: " + "application.properties not found at " + propertyFilePath);
-            throw new RuntimeException("application.properties not found at " + propertyFilePath);
         }
     }
 
@@ -40,46 +30,24 @@ public class ConfigFileReader {
         return configFileReader;
     }
 
+    public static boolean getScreenShotFlag() {
+        return Boolean.parseBoolean(properties.getProperty("screenshot"));
+    }
+
     public String getDriverPath(DriverType driverType) {
-        String driverPath;
         switch (driverType) {
             case CHROME:
-                driverPath = properties.getProperty("chromeDriverPath");
-                break;
+                return properties.getProperty("chromeDriverPath");
             case IE:
-                driverPath = properties.getProperty("ieDriverPath");
-                break;
+                return properties.getProperty("ieDriverPath");
             default:
-                log.error("Unexpected value: " + driverType);
-                throw new IllegalStateException("Unexpected value: " + driverType);
+                log.error("Driver Path not specified in the Configuration.properties file for the Key:driverPath");
+                throw new RuntimeException("Driver Path not specified in the Configuration.properties file for the Key:driverPath");
         }
-        if (driverPath != null) return driverPath;
-        else
-            log.error("Driver Path not specified in the Configuration.properties file for the Key:driverPath");
-            throw new RuntimeException("Driver Path not specified in the Configuration.properties file for the Key:driverPath");
-
     }
 
     public long getImplicitlyWait() {
-        String implicitlyWait = properties.getProperty("implicitlyWait");
-        if (implicitlyWait != null) {
-            try {
-                return Long.parseLong(implicitlyWait);
-            } catch (NumberFormatException exception) {
-                log.error("Error catched: " + exception);
-                log.error("Error throw: " + "Not able to parse value : " + implicitlyWait + " in to Long");
-                throw new RuntimeException("Not able to parse value : " + implicitlyWait + " in to Long");
-            }
-        }
-        return 30;
-    }
-
-    public String getApplicationUrl() {
-        String url = properties.getProperty("url");
-        if (url != null) return url;
-        else
-            log.error("Application Url not specified in the application.properties file for the Key:url");
-        throw new RuntimeException("Application Url not specified in the application.properties file for the Key:url");
+        return Long.parseLong(properties.getProperty("implicitlyWait"));
     }
 
     public DriverType getBrowser() {
@@ -95,5 +63,9 @@ public class ConfigFileReader {
         String windowSize = properties.getProperty("windowMaximize");
         if (windowSize != null) return Boolean.valueOf(windowSize);
         return true;
+    }
+
+    public String getApplicationUrl() {
+        return properties.getProperty("url");
     }
 }

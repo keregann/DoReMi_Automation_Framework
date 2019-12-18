@@ -1,5 +1,8 @@
 package cucumber;
 
+
+import cucumber.api.DataTable;
+import managers.ReflectionManager;
 import managers.WebDriverManager;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
@@ -9,6 +12,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import static managers.ReflectionManager.getWebElement;
 import static utils.DrawBorder.drawBorder;
 
@@ -17,6 +23,10 @@ public class Actions {
     private static Logger log = Logger.getLogger(Actions.class);
     private static WebDriver driver = WebDriverManager.driver;
     private WebDriverWait wait;
+
+    public Actions() {
+        wait = new WebDriverWait(driver, 5);
+    }
 
     public void click(String elementName) throws Exception {
         WebElement webElement = getWebElement(elementName.replace(" ", ""));
@@ -32,6 +42,11 @@ public class Actions {
         drawBorder(webElement);
         webElement.sendKeys(value);
         log.info(webElement + " input: " + value);
+    }
+
+    public void inputDataTable(DataTable params) {
+        Map<String, String> values = new HashMap<>(params.asMap(String.class, String.class));
+        values.forEach((key, value) -> getWebElement(key).sendKeys(value));
     }
 
     public void inputHotelDestination(String elementName, String value) throws Exception {

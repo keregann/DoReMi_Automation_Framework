@@ -5,10 +5,11 @@ import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import managers.WebDriverManager;
 import org.apache.log4j.Logger;
-import utils.ScreenShotsMaker;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import static utils.ScreenShotsMaker.makeDir;
 
 
 public class Hooks {
@@ -23,7 +24,7 @@ public class Hooks {
     public void BeforeSteps(Scenario scenario) {
         log.info("-----Start of scenario-----");
         WebDriverManager.createDriver();
-        //ScreenShotsMaker.makeDir(scenario.getName());
+        makeDir(scenario.getName());
     }
 
     @After
