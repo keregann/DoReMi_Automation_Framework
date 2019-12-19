@@ -2,6 +2,5 @@
 target/
 .idea/
 **.iml
-/src/main/resources/screenShots/
-
 /src/logs/
+/test-output/

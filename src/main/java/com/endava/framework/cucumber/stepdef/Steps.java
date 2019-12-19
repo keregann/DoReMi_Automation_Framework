@@ -1,11 +1,11 @@
 package  com.endava.framework.cucumber.stepdef;
 
-import  com.endava.framework.cucumber.*;
+import com.endava.framework.cucumber.Actions;
+import com.endava.framework.cucumber.assertion.Assertions;
 import cucumber.api.DataTable;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.When;
-import com.endava.framework.cucumber.assertion.*;
 
 import static com.endava.framework.dataProvider.ConfigFileReader.getScreenShotFlag;
 import static com.endava.framework.util.ScreenShotsMaker.takeScreenshot;
@@ -39,5 +39,10 @@ public class Steps {
     @And("^user sets '(.*)' date for '(.*)'$")
     public void userSetsDateForDepartCalendar(String value, String elementName) throws Exception {
         actions.inputFlightsDate(elementName, value);
+    }
+
+    @And("^user clicks the '(.*)'$")
+    public void userClicksTheCompleteBookingButton(String elementName) throws Exception {
+        actions.clickJS(elementName);
     }
 }
