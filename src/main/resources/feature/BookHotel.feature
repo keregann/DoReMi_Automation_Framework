@@ -13,28 +13,25 @@ Feature:User book hotel
     And user clicks 'Login Button'
     Then 'User Account' page is displayed
     When user clicks 'Hotels'
-    Then 'Hotels Tab' is displayed
-    When user enters in Hotels Tab the following values:
-      | destination | Chisinau |
-      | checkIn     | 20       |
-      | checkOut    | 22       |
-      | adults      | 2        |
-      | child       | 0        |
-    And user clicks 'Search Hotel Button'
+    Then 'Hotels Tab' page is displayed
+    When user chooses 'Chisinau' for 'destination'
+    When user enters the following values:
+      | checkIn  | 28/12/2019 |
+      | checkOut | 31/12/2019 |
+    And user clicks 'Search'
     Then 'Hotels' page is displayed
     When user clicks 'Details Button'
+    Then 'Hotel Details' page is displayed
     And user clicks 'See Price and Date Button'
-    And user clicks 'Book Hotel Button'
-    Then 'Payment' page is displayed
+    And user clicks 'Book Now Button'
+    Then 'Booking Details' page is displayed
     When user enters the following values:
-      | title      | Mr                 |
-      | first name | Ion                |
-      | last name  | Drone              |
-      | country    | Moldava            |
-      | email      | ion.drone@mail.com |
-      | phone      | 06868686868        |
-    And user clicks 'Complete Booking Button'
-    Then 'Hotel Booking Purchase' page is displayed
+      | firstName | Ion                |
+      | lastName  | Drone              |
+      | email     | ion.drone@mail.com |
+      | phone     | 06868686868        |
+    And user clicks the 'Complete Booking Button'
+    Then 'Payment' page is displayed
 
 
 ##Scenario 2
@@ -53,9 +50,6 @@ Feature:User book hotel
 #    And user input following valid booking information:
 #      | Title   | FirstName   | LastName   | Country   | Email   | Phone   |
 #      | <title> | <firstName> | <lastName> | <country> | <email> | <phone> |
-#    And user input following valid card details:
-#      | Name          | CardNumber       | Month | Year | SecurityCode |
-#      | Ion Ghincolov | 1234123412341234 | 02    | 2020 | 111          |
 #    And user clicks 'Complete Booking' button
 #    Then warning message will be displayed in fields with invalid data
 #
@@ -89,9 +83,6 @@ Feature:User book hotel
 #    And user input following valid booking information:
 #      | title | firstName | lastName | country | email              | phone       |
 #      | Mr    | Ion       | Drone    | Moldova | ion.drone@mail.com | 06868686868 |
-#    And user input following valid card details:
-#      | Name   | CardNumber   | Month   | Year   | SecurityCode   |
-#      | <name> | <cardNumber> | <month> | <year> | <securityCode> |
 #    And user clicks 'Complete Booking' button
 #    Then warning message will be displayed in fields with invalid data
 #
