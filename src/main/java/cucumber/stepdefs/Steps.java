@@ -2,6 +2,7 @@ package cucumber.stepdefs;
 
 import cucumber.Actions;
 import cucumber.api.DataTable;
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.When;
 
@@ -9,9 +10,7 @@ import static dataProviders.ConfigFileReader.getScreenShotFlag;
 import static utils.ScreenShotsMaker.takeScreenshot;
 
 public class Steps {
-    private MyActions myActions = new MyActions();
     private Actions actions = new Actions();
-    // private Assertions assertion = new Assertions();
 
     @Given("^'(.*)' page is displayed$")
     public void pageIsDisplayed(String pageName) throws Exception {
@@ -20,7 +19,7 @@ public class Steps {
 
     @When("^user clicks '(.*)'$")
     public void click(String webElementName) throws Exception {
-        myActions.click(webElementName);
+        actions.click(webElementName);
         takeScreenshot(getScreenShotFlag());
     }
 
@@ -28,19 +27,15 @@ public class Steps {
     public void userEntersTheFollowingValues(DataTable params) {
         actions.inputDataTable(params);
     }
-//
-//    @When("^user enters the following values:$")
-//    public void userEntersTheFollowingValues(DataTable table) throws Exception {
-//        Reflection.enterData(table);
-//    }
-//
-//    @Then("^'(.*)' message is displayed$")
-//    public void warningMessageIsDisplayed(String element) throws Exception {
-//        BabySitterManager.messageIsDisplayed(element);
-//    }
-//
-//    @And("^sets the following date:$")
-//    public void setsTheFollowingDate() {
-//        BabySitterManager.setDate();
-//    }
+
+    @And("^user chooses '(.*)' for '(.*)'$")
+    public void userChoosesForLocation(String value, String elementName) throws InterruptedException {
+        actions.inputLocation(elementName, value);
+    }
+
+
+    @And("^user sets '(.*)' date for '(.*)'$")
+    public void userSetsDateForDepartCalendar(String value, String elementName) throws Exception {
+        actions.inputFlightsDate(elementName, value);
+    }
 }

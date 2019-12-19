@@ -1,13 +1,12 @@
 Feature: Login functionality
 
-  @margo@login
+  @margo
   Scenario: Login with valid credentials
     Given 'Home' page is displayed
     When user clicks 'My Account'
     And user clicks 'Login Button'
     Then 'Login' page is displayed
     When user enters the following values:
-#    //  | key      | value               |
       | email    | user@phptravels.com |
       | password | demouser            |
 
@@ -18,7 +17,7 @@ Feature: Login functionality
     Then 'Login' page is displayed
 
   @margo
-  Scenario: Login with invalid valid credentials
+  Scenario: Login with invalid credentials
     Given 'Home' page is displayed
     When user clicks 'My Account'
     And user clicks 'Login Button'

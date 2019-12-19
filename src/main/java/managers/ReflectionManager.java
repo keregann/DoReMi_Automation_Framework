@@ -16,17 +16,17 @@ public class ReflectionManager {
     private static Logger log = Logger.getLogger(ReflectionManager.class);
     private static WebDriverWait wait;
 
-    public static boolean pageInit(String pageName) {
+    public static boolean pageInit(String pageName) throws Exception {
         boolean isInitialized = false;
         try {
             currentPageClass = Class.forName("pageObjects." + pageName + "Page");
             BasePage basePage = (BasePage) currentPageClass.newInstance();
             wait = new WebDriverWait(WebDriverManager.driver, 10);
-            wait.until(ExpectedConditions.urlToBe(basePage.getUrl()));
+            wait.until(ExpectedConditions.urlContains(basePage.getUrl()));
             currentPageMethods = currentPageClass.getDeclaredMethods();
             isInitialized = true;
             log.info(currentPageClass + " is initialized");
-        } catch (InstantiationException | IllegalAccessException | ClassNotFoundException exception) {
+        } catch (ClassNotFoundException exception) {
             exception.printStackTrace();
             log.error("Error: " + exception);
         }

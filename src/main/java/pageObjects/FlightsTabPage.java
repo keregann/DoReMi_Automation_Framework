@@ -19,7 +19,7 @@ public class FlightsTabPage extends BasePage {
     WebElement oneWayButton;
 
     @FindBy(xpath = "//label[contains(text(),'Round Trip')]")
-    WebElement roundTripRadioBtn;
+    WebElement roundTripButton;
 
     @FindBy(xpath = "//span[contains(text(),'Economy')]")
     WebElement dropDown;

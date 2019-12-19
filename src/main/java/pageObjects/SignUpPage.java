@@ -8,9 +8,6 @@ import org.openqa.selenium.support.FindBy;
 public class SignUpPage extends BasePage {
     private final String url = "https://www.phptravels.net/register";
 
-    @FindBy(xpath = "//a[@class='collapse-link']")
-    private WebElement signUpPage;
-
     @FindBy(xpath = "//input[@placeholder='First Name']")
     private WebElement firstName;
 
