@@ -1,32 +1,26 @@
-Feature:
+Feature: Flights booking
 
   @sasha
-  Scenario: Book a flight
+  Scenario: Book a One Way flight
     Given 'Home' page is displayed
     When user clicks 'Flights Tab'
-    Then 'FlightsTab' page is displayed
+    Then 'Flights Tab' page is displayed
     When user clicks 'One Way Button'
-#    When user enters the following values:
-#      | key  | value    |
-#      | from | Chisinau |
-#      | to   | Kiev     |
-#
-#    And sets the following date:
-#      | date | 2019-12-17 |
-
+    And user chooses 'Chisinau' for 'From'
+    And user chooses 'Kiev' for 'To'
+    And user sets '19' date for 'Depart Calendar'
     And user clicks 'Search Button'
-    Then 'Flights Results' Page is displayed
+    Then 'Flights Results' page is displayed
 
   @sasha
   Scenario: Book a Round Trip flight
-    Given 'Home' Page is displayed
+    Given 'Home' page is displayed
     When user clicks 'Flights Tab'
-    Then 'Flights Tab' Page is displayed
-    When user clicks 'One Way Button'
-#    When user enters the following values:
-#      | key  | value    |
-#      | from | Chisinau |
-#      | to   | Kiev     |
-
+    Then 'Flights Tab' page is displayed
+    When user clicks 'Round Trip Button'
+    And user chooses 'Chisinau' for 'From'
+    And user chooses 'Kiev' for 'To'
+    And user sets '19' date for 'Depart Calendar'
+    And user sets '24' date for 'Return Calendar'
     And user clicks 'Search Button'
-    Then 'Flights Results' Page is displayed
+    Then 'Flights Results' page is displayed
