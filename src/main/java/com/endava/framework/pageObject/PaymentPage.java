@@ -1,4 +1,4 @@
-package pageObjects;
+package com.endava.framework.pageObject;
 
 import lombok.Getter;
 

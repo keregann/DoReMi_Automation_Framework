@@ -14,10 +14,10 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-import static com.endava.framework.manager.ReflectionManager.getWebElement;
-import static com.endava.framework.util.DrawBorder.drawBorder;
 import static com.endava.framework.cucumber.assertion.Assertions.isDisplayed;
 import static com.endava.framework.cucumber.assertion.Assertions.moveTo;
+import static com.endava.framework.manager.ReflectionManager.getWebElement;
+import static com.endava.framework.util.DrawBorder.drawBorder;
 import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOf;
 
 
@@ -38,6 +38,23 @@ public class Actions {
         log.info(elementName + " is clicked");
     }
 
+
+    public void clickJS(String elementName) throws Exception {
+        WebElement webElement = getWebElement(elementName.replace(" ", ""));
+        drawBorder(webElement);
+        JavascriptExecutor jse = (JavascriptExecutor) WebDriverManager.driver;
+        jse.executeScript("arguments[0].click()", webElement);
+        log.info(webElement + " is clicked");
+    }
+
+    public void input(String elementName, String value) throws Exception {
+        WebElement webElement = getWebElement(elementName.replace(" ", ""));
+        wait.until(visibilityOf(webElement));
+        drawBorder(webElement);
+        webElement.sendKeys(value);
+        log.info(webElement + " input: " + value);
+    }
+
     public void inputDataTable(DataTable params) {
         Map<String, String> values = new LinkedHashMap<>(params.asMap(String.class, String.class));
         values.forEach((key, value) -> {
@@ -52,8 +69,8 @@ public class Actions {
 
     public void inputLocation(String elementName, String value) {
         WebElement webElement = getWebElement(elementName.replace(" ", ""));
-        drawBorder(webElement);
-        webElement.click();
+        JavascriptExecutor jse = (JavascriptExecutor) WebDriverManager.driver;
+        jse.executeScript("arguments[0].click()", webElement);
         webElement.sendKeys(value);
         WebElement foundElement = driver.findElement(By.xpath("//div//span[contains(text(),'" + value + "')]"));
         wait.until(visibilityOf(foundElement));
