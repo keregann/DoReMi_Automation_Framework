@@ -13,7 +13,7 @@ formatter.feature({
   ]
 });
 formatter.before({
-  "duration": 13630588900,
+  "duration": 14697372400,
   "status": "passed"
 });
 formatter.scenario({
@@ -106,7 +106,7 @@ formatter.match({
   "location": "Steps.pageIsDisplayed(String)"
 });
 formatter.result({
-  "duration": 273015200,
+  "duration": 306797100,
   "status": "passed"
 });
 formatter.match({
@@ -119,7 +119,7 @@ formatter.match({
   "location": "Steps.click(String)"
 });
 formatter.result({
-  "duration": 441845600,
+  "duration": 627652000,
   "status": "passed"
 });
 formatter.match({
@@ -132,7 +132,7 @@ formatter.match({
   "location": "Steps.click(String)"
 });
 formatter.result({
-  "duration": 2776788600,
+  "duration": 2593064700,
   "status": "passed"
 });
 formatter.match({
@@ -145,14 +145,14 @@ formatter.match({
   "location": "Steps.pageIsDisplayed(String)"
 });
 formatter.result({
-  "duration": 14807600,
+  "duration": 15911300,
   "status": "passed"
 });
 formatter.match({
   "location": "Steps.userEntersTheFollowingValues(DataTable)"
 });
 formatter.result({
-  "duration": 483441900,
+  "duration": 767503300,
   "status": "passed"
 });
 formatter.match({
@@ -165,7 +165,7 @@ formatter.match({
   "location": "Steps.click(String)"
 });
 formatter.result({
-  "duration": 342731100,
+  "duration": 469248700,
   "status": "passed"
 });
 formatter.match({
@@ -178,7 +178,7 @@ formatter.match({
   "location": "Steps.pageIsDisplayed(String)"
 });
 formatter.result({
-  "duration": 3823638800,
+  "duration": 3742831500,
   "status": "passed"
 });
 formatter.match({
@@ -191,7 +191,7 @@ formatter.match({
   "location": "Steps.click(String)"
 });
 formatter.result({
-  "duration": 413669000,
+  "duration": 667116900,
   "status": "passed"
 });
 formatter.match({
@@ -204,7 +204,7 @@ formatter.match({
   "location": "Steps.click(String)"
 });
 formatter.result({
-  "duration": 2340540600,
+  "duration": 2455587600,
   "status": "passed"
 });
 formatter.match({
@@ -217,11 +217,11 @@ formatter.match({
   "location": "Steps.pageIsDisplayed(String)"
 });
 formatter.result({
-  "duration": 15262300,
+  "duration": 11085200,
   "status": "passed"
 });
 formatter.after({
-  "duration": 1109940700,
+  "duration": 904146100,
   "status": "passed"
 });
 });
