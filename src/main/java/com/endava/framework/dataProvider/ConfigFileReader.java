@@ -20,8 +20,7 @@ public class ConfigFileReader {
             properties.load(reader);
         } catch (IOException exception) {
             exception.printStackTrace();
-            log.error("Error throw: application.properties not found at " + propertyFilePath);
-            log.error("Error catched: " + exception);
+            log.error(exception.getStackTrace());
         }
     }
 

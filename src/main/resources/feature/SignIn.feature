@@ -1,7 +1,7 @@
 @Margarita
 Feature: Login functionality
 
- @login
+  @login
   Scenario: Login with valid credentials
     Given 'Home' page is displayed
     When user clicks 'My Account'
@@ -27,6 +27,5 @@ Feature: Login functionality
       | email    | margarita.gabureac@mail.com |
       | password | 0123                        |
     And user clicks 'Login Button'
-#    Then following message is displayed:
-#      |Message|
+    Then warning 'INVALID_LOGIN_PASSWORD' is present on the page
 

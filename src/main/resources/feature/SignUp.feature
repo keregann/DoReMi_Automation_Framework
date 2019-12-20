@@ -7,12 +7,12 @@ Feature: Sign Up functionality
     And user clicks 'Sign Up'
     Then 'Sign Up' page is displayed
     When user enters the following values:
-      | firstName    | Pop              |
-      | lastName     | Diana            |
-      | mobileNumber | 06521347         |
-      | email        | abrakadabra15@mail.ru |
-      | password     | 0123456          |
-      | confirm      | 0123456          |
+      | firstName    | Pop                   |
+      | lastName     | Diana                 |
+      | mobileNumber | 06521347              |
+      | email        | abrakadabra22@mail.ru |
+      | password     | 0123456               |
+      | confirm      | 0123456               |
     And user clicks 'Sign Up'
     Then 'User Account' page is displayed
     When user clicks 'My Account'
@@ -25,9 +25,9 @@ Feature: Sign Up functionality
     And user clicks 'Sign Up'
     Then 'Sign Up' page is displayed
     When user clicks 'Sign Up'
-    Then 'warning' message is displayed
+    Then warning 'INVALID_EMAIL' is present on the page
 
-  Scenario: Validate the connection between "Password" and "Confirm Password"
+  Scenario: Validate the connection between Password and Confirm Password
     Given 'Home' page is displayed
     When user clicks 'My Account'
     And user clicks 'Sign Up'
@@ -36,24 +36,22 @@ Feature: Sign Up functionality
       | password | 123654 |
       | confirm  | 123123 |
     And user clicks 'Sign Up'
-    Then 'warning' message is displayed
+    Then warning 'INVALID_MATCHING_OF_PASSWORD' is present on the page
 
 
   Scenario Outline: Validate Email and Password fields on Sing Up page
     Given 'Home' page is displayed
     When user clicks 'My Account'
-    And user clicks 'SingUp'
-    Then 'SingUp' page is displayed
+    And user clicks 'SignUp'
+    Then 'SignUp' page is displayed
     When user enters the following values:
       | <key> | <value> |
-    And user clicks 'Sing Up'
-#    Then warning message is present on the page
+    And user clicks 'Sign Up'
+    Then warning '<message>' is present on the page
 
     Examples:
-      | key      | value                                                                 |
-      | Password | 12345                                                                 |
-      | Email    | adsdsdc.com                                                           |
-      | Email    | addc@xds                                                              |
-      | Email    | axdfvgsxsdfdcxzswesdssaxzaswxdssxssawedsssxazwedwsawedsaswsdaqwsd@e.c |
-
+      | key      | value       | message               |
+      | Password | 12345       | INVALID_DATA_PASSWORD |
+      | Email    | adsdsdc.com | INVALID_DATA_MAIL     |
+      | Email    | addc@xds    | INVALID_DATA_MAIL     |
 

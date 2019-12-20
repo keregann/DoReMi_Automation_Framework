@@ -27,6 +27,6 @@ public class LoginPage extends BasePage {
     private WebElement forgotPasswordButton;
 
     @FindBy(xpath = "//div[@class='alert alert-danger']")
-    private WebElement warning;
+    private WebElement warningMessage;
 
 }

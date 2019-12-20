@@ -9,7 +9,7 @@ import org.junit.runner.RunWith;
         features = "src/main/resources/feature/",
         glue = {"com.endava.framework/cucumber/stepdef",
                 "com.endava.framework/cucumber/hook"},
-        tags = {"@Ion"},
+        tags = {"@Margarita"},
         plugin = {"pretty", "html:test-output"}
 )
 public class TestRunner {

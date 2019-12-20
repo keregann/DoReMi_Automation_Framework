@@ -1,5 +1,6 @@
 package com.endava.framework.cucumber.assertion;
 
+import com.endava.framework.constant.WarningMessages;
 import com.endava.framework.manager.WebDriverManager;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebElement;
@@ -7,10 +8,11 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import static com.endava.framework.manager.ReflectionManager.getWebElement;
 import static com.endava.framework.manager.ReflectionManager.pageInit;
+import static com.endava.framework.util.DrawBorder.drawBorder;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
-import static com.endava.framework.util.DrawBorder.drawBorder;
 
 public class Assertions {
     private static Logger log = Logger.getLogger(Assertions.class);
@@ -32,5 +34,12 @@ public class Assertions {
         Actions actions = new Actions(WebDriverManager.driver);
         actions.moveToElement(webElement).build().perform();
         return webElement;
+    }
+
+    public static void warningMessageIsDisplayed(WarningMessages warningMessages) throws Exception {
+        String message = warningMessages.getMessage();
+        WebElement webElement = getWebElement("warningMessage");
+        assertThat(message, webElement.getText().contains(message), is(true));
+        log.info("'" + message + "'" + " message is displayed");
     }
 }

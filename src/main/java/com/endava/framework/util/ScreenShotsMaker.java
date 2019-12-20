@@ -31,7 +31,7 @@ public class ScreenShotsMaker {
                 FileHandler.copy(screenshot, new File(screenShotPath + "/" + fileName));
             } catch (IOException exception) {
                 exception.printStackTrace();
-                log.error("Error: " + exception);
+                log.error(exception.getStackTrace());
             }
         }
     }
@@ -44,7 +44,7 @@ public class ScreenShotsMaker {
                 screenShotPath = Files.createDirectories(path);
             } catch (IOException exception) {
                 exception.printStackTrace();
-                log.error("Error: " + exception);
+                log.error(exception.getStackTrace());
             }
         }
     }
