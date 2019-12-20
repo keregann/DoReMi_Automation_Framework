@@ -14,7 +14,9 @@ public enum WarningMessages {
     INVALID_EMAIL("The Email field is required."),
     INVALID_DATA_MAIL("The Email field must contain a valid email address."),
     INVALID_DATA_PASSWORD("The Password field must be at least 6 characters in length."),
-    INVALID_MATCHING_OF_PASSWORD("Password not matching with confirm password.");
+    INVALID_MATCHING_OF_PASSWORD("Password not matching with confirm password."),
+    INVALID_MATCHING_LOCATION("No matches found"),
+    INVALID_DATE("Invalid date");
 
     private String message;
 }

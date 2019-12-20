@@ -43,7 +43,7 @@ public class Actions {
 
     public void clickJS(String elementName) {
         WebElement webElement = getWebElement(elementName.replace(" ", ""));
-        drawBorder(webElement);
+        // drawBorder(webElement);
         JavascriptExecutor jse = (JavascriptExecutor) WebDriverManager.driver;
         jse.executeScript("arguments[0].click()", webElement);
         log.info(webElement + " is clicked");
