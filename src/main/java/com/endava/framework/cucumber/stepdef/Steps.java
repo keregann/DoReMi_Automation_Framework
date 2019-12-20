@@ -51,4 +51,14 @@ public class Steps {
     public void warningMessageIsPresentOnThePage(WarningMessages warningMessages) throws Exception {
         Assertions.warningMessageIsDisplayed(warningMessages);
     }
+
+    @And("^from the '(.*)' user chooses '(.*)'$")
+    public void fromTheDropDownListUserChoosesValue(String element, String value) {
+        actions.dropDownList(element, value);
+    }
+
+    @And("^user sets '(.*)' person for '(.*)'$")
+    public void userSetsPersonForAdults(Integer number, String name) {
+        actions.setPersons(number, name);
+    }
 }

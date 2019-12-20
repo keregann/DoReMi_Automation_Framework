@@ -1,6 +1,5 @@
 package com.endava.framework.dataProvider;
 
-import com.endava.framework.constant.DriverType;
 import org.apache.log4j.Logger;
 
 import java.io.BufferedReader;
@@ -32,15 +31,15 @@ public class ConfigFileReader {
         return Boolean.parseBoolean(properties.getProperty("screenshot"));
     }
 
-    public String getDriverPath(DriverType driverType) {
-        switch (driverType) {
-            case CHROME:
+    public String getDriverPath() {
+        switch (getBrowser()) {
+            case "chrome":
                 return properties.getProperty("chromeDriverPath");
-            case IE:
+            case "ie":
                 return properties.getProperty("ieDriverPath");
             default:
                 log.error("Driver Path not specified in the Configuration.properties file for the Key:driverPath");
-                throw new RuntimeException("Driver Path not specified in the Configuration.properties file for the Key:driverPath");
+                return "Driver Path not specified in the Configuration.properties file for the Key:driverPath";
         }
     }
 
@@ -48,23 +47,12 @@ public class ConfigFileReader {
         return Long.parseLong(properties.getProperty("implicitlyWait"));
     }
 
-    public DriverType getBrowser() {
-        String browserName = properties.getProperty("browser");
-        if (browserName == null || browserName.equals("chrome")) return DriverType.CHROME;
-        else if (browserName.equalsIgnoreCase("ie")) return DriverType.IE;
-        else
-            log.error("Browser Name Key value in application.properties is not matched : " + browserName);
-        throw new RuntimeException("Browser Name Key value in application.properties is not matched : " + browserName);
+    public String getBrowser() {
+        return properties.getProperty("browser");
     }
 
     public String getPageObjectPath(){
         return properties.getProperty("pageObjectPath");
-    }
-
-    public Boolean getBrowserWindowSize() {
-        String windowSize = properties.getProperty("windowMaximize");
-        if (windowSize != null) return Boolean.valueOf(windowSize);
-        return true;
     }
 
     public String getApplicationUrl() {
