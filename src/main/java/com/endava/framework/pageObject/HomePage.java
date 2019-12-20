@@ -8,6 +8,9 @@ import org.openqa.selenium.support.FindBy;
 public class HomePage extends BasePage {
     private final String url = "https://www.phptravels.net/index.php";
 
+    @FindBy(xpath = "//a[contains(text(),'Hotels')]")
+    private WebElement hotels;
+
     @FindBy(xpath = "(//a[@id='dropdownCurrency'])[2]")
     private WebElement myAccount;
 

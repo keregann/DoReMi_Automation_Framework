@@ -6,7 +6,7 @@ import org.openqa.selenium.support.FindBy;
 
 @Getter
 public class HotelsTabPage extends BasePage {
-    private final String url = "https://www.phptravels.net/m-hotels";
+    private final String url = "https://www.phptravels.net/";
 
     @FindBy(xpath = "//a[@href='#hotels']")
     private WebElement hotels;
@@ -23,4 +23,6 @@ public class HotelsTabPage extends BasePage {
     @FindBy(xpath = "//div[@class='col-md-2 col-xs-12 o1']//button[@class='btn btn-primary btn-block'][contains(text(),'Search')]")
     private WebElement search;
 
+    @FindBy(xpath = "//li[@class='select2-no-results']")
+    private WebElement noMatchesFound;
 }

@@ -15,5 +15,11 @@ public class HotelDetailsPage extends BasePage {
     @FindBy(xpath = "//div[@class='room-item-wrapper']//div[2]//div[1]//div[2]//div[1]//div[2]//form[1]//button[1]")
     private WebElement bookNowButton;
 
+    //input[@class='select2-input']
+
+    //input[@id='checkin']
+
+    //input[@id='checkout']
+
 }
 
