@@ -61,8 +61,9 @@ public class Actions {
             try {
                 isDisplayed(getWebElement(key)).sendKeys(value);
                 log.info(value + " introduced into " + key);
-            } catch (InterruptedException exceotion) {
-                exceotion.printStackTrace();
+            } catch (InterruptedException exception) {
+                exception.printStackTrace();
+                log.error(exception.getStackTrace());
             }
         });
     }

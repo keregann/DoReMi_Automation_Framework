@@ -1,18 +1,18 @@
 package com.endava.framework.manager;
 
 import com.endava.framework.dataProvider.ConfigFileReader;
+import com.endava.framework.pageObject.BasePage;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import com.endava.framework.pageObject.BasePage;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 public class ReflectionManager {
 
-    private static Class currentPageClass;
+    public static Class currentPageClass;
     private static Method[] currentPageMethods;
     private static Logger log = Logger.getLogger(ReflectionManager.class);
     private static WebDriverWait wait;
@@ -29,7 +29,7 @@ public class ReflectionManager {
             log.info(currentPageClass.getName() + " is initialized");
         } catch (ClassNotFoundException exception) {
             exception.printStackTrace();
-            log.error("Error: " + exception);
+            log.error(exception.getStackTrace());
         }
         return isInitialized;
     }
@@ -45,7 +45,7 @@ public class ReflectionManager {
             }
         } catch (IllegalArgumentException | InvocationTargetException | IllegalAccessException | InstantiationException exception) {
             exception.printStackTrace();
-            log.error(exception);
+            log.error(exception.getStackTrace());
         }
         return webElement;
     }

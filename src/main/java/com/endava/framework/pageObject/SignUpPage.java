@@ -26,9 +26,9 @@ public class SignUpPage extends BasePage {
     @FindBy(xpath = "//input[@placeholder='Confirm Password']")
     private WebElement confirm;
 
-    @FindBy(xpath = "/html[1]/body[1]/div[2]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/form[1]/div[9]/button[1]")
+    @FindBy(xpath = "//div[2]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/form[1]/div[9]/button[1]")
     private WebElement signUp;
 
-    @FindBy(xpath = "/html[1]/body[1]/div[2]/div[1]/section[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]/form[1]/div[2]/div[1]/p[1]")
-    private WebElement warning;
+    @FindBy(xpath = "//div[@class='alert alert-danger']")
+    private WebElement warningMessage;
 }
