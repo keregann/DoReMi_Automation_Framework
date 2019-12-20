@@ -1,10 +1,10 @@
 package com.endava.framework.pageObject;
 
-import com.endava.framework.manager.WebDriverManager;
 import lombok.Getter;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+
+import java.util.List;
 
 @Getter
 public class FlightsTabPage extends BasePage {
@@ -20,7 +20,7 @@ public class FlightsTabPage extends BasePage {
     WebElement roundTripButton;
 
     @FindBy(xpath = "//span[contains(text(),'Economy')]")
-    WebElement dropDown;
+    WebElement dropDownList;
 
     @FindBy(xpath = "//div[@id='s2id_location_from']//a[@class='select2-choice']")
     WebElement from;
@@ -34,43 +34,23 @@ public class FlightsTabPage extends BasePage {
     @FindBy(xpath = "//input[@id='FlightsDateEnd']")
     WebElement returnCalendar;
 
-    @FindBy(xpath = "//div[@id='flights']//div[contains(@class,'row gap-5')]//div[1]//div[1]//div[2]//div[1]//input[1]")
-    WebElement adultsField;
+    @FindBy(xpath = "//input[@name='fadults']")
+    WebElement adults;
 
-    @FindBy(xpath = "//div[@id='flights']//div[contains(@class,'row gap-5')]//div[1]//div[1]//div[2]//div[1]//span[1]//button[1]")
-    WebElement adultsFieldPlus;
+    @FindBy(xpath = "//input[@name='fchildren']")
+    WebElement child;
 
-    @FindBy(xpath = "//div[@id='flights']//div[contains(@class,'row gap-5')]//div[1]//div[1]//div[2]//div[1]//span[1]//button[2]")
-    WebElement adultsFieldMinus;
+    @FindBy(xpath = "//input[@name='finfant']")
+    WebElement infant;
 
-    @FindBy(xpath = "//div[@id='flights']//div[contains(@class,'col-md-3 col-xs-12')]//div[2]//div[1]//div[2]//div[1]//input[1]")
-    WebElement childField;
+    @FindBy(xpath = "//div[@class='col-4']//button[@class='btn btn-white bootstrap-touchspin-up ']")
+    WebElement plus;
 
-    @FindBy(xpath = "//div[contains(@class,'row gap-10 mb-15 align-items-end row-reverse')]//div[2]//div[1]//div[2]//div[1]//span[1]//button[1]")
-    WebElement childFieldPlus;
+    @FindBy(xpath = "//div[@class='col-4']//button[@class='btn btn-white bootstrap-touchspin-down ']")
+    List<WebElement> minus;
 
-    @FindBy(xpath = "//div[contains(@class,'row gap-10 mb-15 align-items-end row-reverse')]//div[2]//div[1]//div[2]//div[1]//span[1]//button[2]")
-    WebElement childFieldMinus;
-
-    @FindBy(xpath = "//div[contains(@class,'col-md-3 col-xs-12')]//div[3]//div[1]//div[2]//div[1]//input[1]")
-    WebElement infantField;
-
-    @FindBy(xpath = "//div[contains(@class,'col-md-3 col-xs-12')]//div[3]//div[1]//div[2]//div[1]//span[1]//button[1]")
-    WebElement infantFieldPlus;
-
-    @FindBy(xpath = "//div[contains(@class,'col-md-3 col-xs-12')]//div[3]//div[1]//div[2]//div[1]//span[1]//button[2]")
-    WebElement infantFieldMinus;
-
-    @FindBy(xpath = "//div[@class='col-xs-12 col-md-1']//button[@class='btn-primary btn btn-block'][contains(text(),'Search')]")
+    @FindBy(xpath = "//div[@class='col-xs-12 col-md-1']//button[contains(text(),'Search')]")
     WebElement searchButton;
-
-
-    public void setDepartCalendarDate() {
-        departCalendar.click();
-        WebDriverManager.driver.findElement(By.xpath("//div[7]//div[1]//div[1]//div[2]//div[17]")).click();
-
-    }
-
 }
 
 

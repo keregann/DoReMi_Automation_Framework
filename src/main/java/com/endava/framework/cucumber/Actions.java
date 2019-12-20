@@ -1,6 +1,7 @@
 package com.endava.framework.cucumber;
 
 
+import com.endava.framework.manager.ReflectionManager;
 import com.endava.framework.manager.WebDriverManager;
 import cucumber.api.DataTable;
 import org.apache.log4j.Logger;
@@ -12,6 +13,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 import static com.endava.framework.cucumber.assertion.Assertions.isDisplayed;
@@ -39,7 +41,7 @@ public class Actions {
     }
 
 
-    public void clickJS(String elementName) throws Exception {
+    public void clickJS(String elementName) {
         WebElement webElement = getWebElement(elementName.replace(" ", ""));
         drawBorder(webElement);
         JavascriptExecutor jse = (JavascriptExecutor) WebDriverManager.driver;
@@ -47,7 +49,7 @@ public class Actions {
         log.info(webElement + " is clicked");
     }
 
-    public void input(String elementName, String value) throws Exception {
+    public void input(String elementName, String value) {
         WebElement webElement = getWebElement(elementName.replace(" ", ""));
         wait.until(visibilityOf(webElement));
         drawBorder(webElement);
@@ -70,8 +72,8 @@ public class Actions {
 
     public void inputLocation(String elementName, String value) {
         WebElement webElement = getWebElement(elementName.replace(" ", ""));
-        JavascriptExecutor jse = (JavascriptExecutor) WebDriverManager.driver;
-        jse.executeScript("arguments[0].click()", webElement);
+        // JavascriptExecutor jse = (JavascriptExecutor) WebDriverManager.driver;
+        webElement.click();
         webElement.sendKeys(value);
         WebElement foundElement = driver.findElement(By.xpath("//div//span[contains(text(),'" + value + "')]"));
         wait.until(visibilityOf(foundElement));
@@ -80,7 +82,7 @@ public class Actions {
         log.info(webElement.getText() + " input: " + value);
     }
 
-    public void inputFlightsDate(String elementName, String value) throws Exception {
+    public void inputFlightsDate(String elementName, String value) {
         WebElement webElement = getWebElement(elementName.replace(" ", ""));
         drawBorder(webElement);
         JavascriptExecutor js = (JavascriptExecutor) driver;
@@ -91,8 +93,46 @@ public class Actions {
             WebElement startDate = driver.findElement(By.xpath("/html[1]/body[1]/div[3]/div[7]/div[1]/div[1]/div[2]/div[" + value + "]"));
             wait.until(ExpectedConditions.elementToBeClickable(startDate)).click();
         } else if (elementName.equalsIgnoreCase("Return Calendar")) {
-            WebElement endDate = driver.findElement(By.xpath("/html[1]/body[1]/div[3]/div[8]/div[1]/div[1]/div[2]/div[24]"));
+            WebElement endDate = driver.findElement(By.xpath("/html[1]/body[1]/div[3]/div[8]/div[1]/div[1]/div[2]/div[" + value + "]"));
             wait.until(ExpectedConditions.elementToBeClickable(endDate)).click();
+        }
+    }
+
+    public void dropDownList(String element, String value) {
+        WebElement webElement = getWebElement(element.replace(" ", ""));
+        drawBorder(webElement);
+        webElement.click();
+        List<WebElement> listOf = WebDriverManager.driver.findElements(By.xpath("//li[@data-option-array-index]"));
+        for (WebElement e : listOf) {
+            if (e.getText().equalsIgnoreCase(value)) {
+                drawBorder(e);
+                e.click();
+                break;
+            }
+        }
+    }
+
+    public void setPersons(Integer number, String name) {
+        WebElement personType = getWebElement(name);
+        drawBorder(personType);
+        List<WebElement> plusButtons = WebDriverManager.driver
+                .findElements(By.xpath("//button[@class='btn btn-white bootstrap-touchspin-up ']"));
+        switch (name) {
+            case "Adults":
+                for (int i = 0; i <= number - 2; i++) {
+                    plusButtons.get(2).click();
+                }
+                break;
+            case "Child":
+                for (int i = 0; i <= number - 1; i++) {
+                    plusButtons.get(3).click();
+                }
+                break;
+            case "Infant":
+                for (int i = 0; i <= number - 1; i++) {
+                    plusButtons.get(4).click();
+                }
+                break;
         }
     }
 }
