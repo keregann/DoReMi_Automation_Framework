@@ -1,7 +1,6 @@
 package com.endava.framework.cucumber;
 
 
-import com.endava.framework.manager.ReflectionManager;
 import com.endava.framework.manager.WebDriverManager;
 import cucumber.api.DataTable;
 import org.apache.log4j.Logger;
@@ -27,16 +26,19 @@ public class Actions {
     private static Logger log = Logger.getLogger(Actions.class);
     private static WebDriver driver;
     private WebDriverWait wait;
+    org.openqa.selenium.interactions.Actions actions;
 
     public Actions() {
         driver = WebDriverManager.driver;
-        wait = new WebDriverWait(driver, 5);
+        wait = new WebDriverWait(WebDriverManager.driver, 10);
+        actions = new org.openqa.selenium.interactions.Actions(WebDriverManager.driver);
     }
 
     public void click(String elementName) throws Exception {
         WebElement webElement = getWebElement(elementName.replace(" ", ""));
+        wait.until(ExpectedConditions.visibilityOf(webElement));
         drawBorder(webElement);
-        wait.until(ExpectedConditions.elementToBeClickable(moveTo(webElement))).click();
+        wait.until(ExpectedConditions.elementToBeClickable((moveTo(webElement)))).click();
         log.info(elementName + " is clicked");
     }
 
@@ -73,8 +75,12 @@ public class Actions {
     public void inputLocation(String elementName, String value) {
         WebElement webElement = getWebElement(elementName.replace(" ", ""));
         // JavascriptExecutor jse = (JavascriptExecutor) WebDriverManager.driver;
+        drawBorder(webElement);
+        wait.until(ExpectedConditions.visibilityOf(webElement));
         webElement.click();
-        webElement.sendKeys(value);
+        actions.sendKeys(webElement, value).build().perform();
+
+        // webElement.sendKeys(value);
         WebElement foundElement = driver.findElement(By.xpath("//div//span[contains(text(),'" + value + "')]"));
         wait.until(visibilityOf(foundElement));
         drawBorder(foundElement);
@@ -91,10 +97,14 @@ public class Actions {
 
         if (elementName.equalsIgnoreCase("Depart Calendar")) {
             WebElement startDate = driver.findElement(By.xpath("/html[1]/body[1]/div[3]/div[7]/div[1]/div[1]/div[2]/div[" + value + "]"));
+            drawBorder(startDate);
             wait.until(ExpectedConditions.elementToBeClickable(startDate)).click();
+            log.info(value + " set to " + elementName);
         } else if (elementName.equalsIgnoreCase("Return Calendar")) {
             WebElement endDate = driver.findElement(By.xpath("/html[1]/body[1]/div[3]/div[8]/div[1]/div[1]/div[2]/div[" + value + "]"));
+            drawBorder(endDate);
             wait.until(ExpectedConditions.elementToBeClickable(endDate)).click();
+            log.info(value + " set to " + elementName);
         }
     }
 
@@ -102,37 +112,62 @@ public class Actions {
         WebElement webElement = getWebElement(element.replace(" ", ""));
         drawBorder(webElement);
         webElement.click();
+        log.info(element + " is clicked");
         List<WebElement> listOf = WebDriverManager.driver.findElements(By.xpath("//li[@data-option-array-index]"));
         for (WebElement e : listOf) {
             if (e.getText().equalsIgnoreCase(value)) {
                 drawBorder(e);
                 e.click();
+                log.info(value + " is clicked");
                 break;
             }
         }
     }
 
-    public void setPersons(Integer number, String name) {
+    public void setPersons(int number, String name) {
         WebElement personType = getWebElement(name);
         drawBorder(personType);
         List<WebElement> plusButtons = WebDriverManager.driver
                 .findElements(By.xpath("//button[@class='btn btn-white bootstrap-touchspin-up ']"));
         switch (name) {
             case "Adults":
+                drawBorder(plusButtons.get(2));
                 for (int i = 0; i <= number - 2; i++) {
                     plusButtons.get(2).click();
                 }
+                log.info(number + " persons added to " + name);
                 break;
             case "Child":
+                drawBorder(plusButtons.get(3));
                 for (int i = 0; i <= number - 1; i++) {
                     plusButtons.get(3).click();
                 }
+                log.info(number + " persons added to " + name);
                 break;
             case "Infant":
+                drawBorder(plusButtons.get(4));
                 for (int i = 0; i <= number - 1; i++) {
                     plusButtons.get(4).click();
                 }
+                log.info(number + " persons added to " + name);
                 break;
         }
     }
+
+    public void dragAndDrop() {
+        WebElement fromSlider = getWebElement("fromSlider");
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollBy(0,100)");
+        wait.until(ExpectedConditions.visibilityOf(fromSlider));
+        actions.moveToElement(fromSlider);
+        drawBorder(fromSlider);
+        actions.clickAndHold().moveByOffset(50, 0).release().build().perform();
+        WebElement toSlider = getWebElement("toSlider");
+        wait.until(ExpectedConditions.visibilityOf(toSlider));
+        actions.moveToElement(toSlider);
+        drawBorder(toSlider);
+        actions.clickAndHold().moveByOffset(-60, 0).release().build().perform();
+        log.info(" to slider moved");
+    }
+
 }

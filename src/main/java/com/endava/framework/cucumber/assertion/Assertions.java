@@ -3,6 +3,7 @@ package com.endava.framework.cucumber.assertion;
 import com.endava.framework.constant.WarningMessages;
 import com.endava.framework.manager.WebDriverManager;
 import org.apache.log4j.Logger;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -32,6 +33,8 @@ public class Assertions {
 
     public static WebElement moveTo(WebElement webElement) throws InterruptedException {
         Actions actions = new Actions(WebDriverManager.driver);
+        JavascriptExecutor jse = (JavascriptExecutor) WebDriverManager.driver;
+        jse.executeScript("arguments[0].scrollIntoView();", webElement);
         actions.moveToElement(webElement).build().perform();
         return webElement;
     }

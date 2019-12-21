@@ -37,6 +37,8 @@ public class ConfigFileReader {
                 return properties.getProperty("chromeDriverPath");
             case "ie":
                 return properties.getProperty("ieDriverPath");
+            case "firefox":
+                return properties.getProperty("firefoxDriverPath");
             default:
                 log.error("Driver Path not specified in the Configuration.properties file for the Key:driverPath");
                 return "Driver Path not specified in the Configuration.properties file for the Key:driverPath";

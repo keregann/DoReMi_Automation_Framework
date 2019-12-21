@@ -10,7 +10,7 @@ Feature: Sign Up functionality
       | firstName    | Pop                   |
       | lastName     | Diana                 |
       | mobileNumber | 06521347              |
-      | email        | abrakadabra22@mail.ru |
+      | email        | abrakadabra26@mail.ru |
       | password     | 0123456               |
       | confirm      | 0123456               |
     And user clicks 'Sign Up'

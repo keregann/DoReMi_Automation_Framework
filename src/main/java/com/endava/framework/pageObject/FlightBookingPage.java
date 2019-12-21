@@ -1,13 +1,14 @@
-//package com.endava.doremi_automation_framework.pageObject;
-//
-//
-//import org.openqa.selenium.JavascriptExecutor;
-//import org.openqa.selenium.WebElement;
-//import org.openqa.selenium.support.FindBy;
-//
-//public class FlightBookingPage extends BasePage {
-//
-//
+package com.endava.framework.pageObject;
+
+import lombok.Getter;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+
+@Getter
+public class FlightBookingPage extends BasePage {
+
+    private final String url = "https://www.phptravels.net/thflights/checkout";
 //    @FindBy(xpath = "//select[@id='title']")
 //    WebElement titleDropDown;
 //
@@ -110,4 +111,4 @@
 ////
 ////        return this;
 ////    }
-//}
+}
