@@ -27,7 +27,7 @@ public class Hooks {
     }
 
     @After
-    public void AfterSteps() {
+    public void AfterSteps(Scenario scenario) {
         log.info("-----End of scenario-----");
         WebDriverManager.closeDriver();
     }

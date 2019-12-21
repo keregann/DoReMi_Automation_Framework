@@ -3,6 +3,7 @@ package com.endava.framework.cucumber.stepdef;
 import com.endava.framework.constant.WarningMessages;
 import com.endava.framework.cucumber.Actions;
 import com.endava.framework.cucumber.assertion.Assertions;
+import com.endava.framework.manager.WebDriverManager;
 import cucumber.api.DataTable;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
@@ -58,7 +59,12 @@ public class Steps {
     }
 
     @And("^user sets '(.*)' person for '(.*)'$")
-    public void userSetsPersonForAdults(Integer number, String name) {
+    public void userSetsPersonForAdults(int number, String name) {
         actions.setPersons(number, name);
+    }
+
+    @When("^user sets the price range$")
+    public void userSetsThePriceRange() {
+        actions.dragAndDrop();
     }
 }

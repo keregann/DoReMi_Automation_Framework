@@ -8,7 +8,15 @@ import org.openqa.selenium.support.FindBy;
 public class FlightsResultsPage extends BasePage {
     private final String url = "https://www.phptravels.net/";
 
-    @FindBy(xpath = "//li[1]//div[1]//div[1]//div[2]//form[1]//div[2]//div[1]//button[1]")
-    WebElement bookNowBtn;
+    @FindBy(xpath = "//div[@class='theme-search-results-item-book']//button[@type='submit']")
+    WebElement bookNowButton;
 
+    @FindBy(xpath = "//span[@class='irs-slider from']")
+    WebElement fromSlider;
+
+    @FindBy(xpath = "//span[@class='irs-slider to']")
+    WebElement toSlider;
+
+    @FindBy(xpath = "//span[contains(text(),'Air Moldova')]")
+    WebElement airMoldovaCheckbox;
 }
