@@ -9,9 +9,9 @@ import org.junit.runner.RunWith;
         features = "src/main/resources/feature/",
         glue = {"com.endava.framework/cucumber/stepdef",
                 "com.endava.framework/cucumber/hook"},
-        tags = {"@Margarita"},
-        plugin = {"pretty", "html:test-output"}
-)
+        tags = {"@login"},
+        plugin = {"pretty", "html:test-output",
+                "json:test-output/jsonreport.json"})
 public class TestRunner {
 
 }

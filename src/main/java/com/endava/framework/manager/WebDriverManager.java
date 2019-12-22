@@ -1,12 +1,13 @@
 package com.endava.framework.manager;
 
-import com.endava.framework.dataProvider.ConfigFileReader;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 
 import java.util.concurrent.TimeUnit;
+
+import static com.endava.framework.dataProvider.ConfigFileReader.getInstance;
 
 public class WebDriverManager {
     private static final String IE_DRIVER_PROPERTY = "webdriver.ie.driver";
@@ -17,30 +18,30 @@ public class WebDriverManager {
     private static String driverType;
 
     private WebDriverManager() {
-        driverType = ConfigFileReader.getInstance().getBrowser();
+        driverType = getInstance().getBrowser();
     }
 
     public static WebDriver createDriver() {
         switch (driverType) {
             case "chrome":
-                System.setProperty(CHROME_DRIVER_PROPERTY, ConfigFileReader.getInstance().getDriverPath());
+                System.setProperty(CHROME_DRIVER_PROPERTY, getInstance().getDriverPath());
                 driver = new ChromeDriver();
                 break;
             case "ie":
-                System.setProperty(IE_DRIVER_PROPERTY, ConfigFileReader.getInstance().getDriverPath());
+                System.setProperty(IE_DRIVER_PROPERTY, getInstance().getDriverPath());
                 driver = new InternetExplorerDriver();
                 break;
             case "firefox":
-                System.setProperty(FIREFOX_DRIVER_PROPERTY, ConfigFileReader.getInstance().getDriverPath());
+                System.setProperty(FIREFOX_DRIVER_PROPERTY, getInstance().getDriverPath());
                 driver = new FirefoxDriver();
                 break;
         }
 
         driver.manage().window().maximize();
-        driver.navigate().to(ConfigFileReader.getInstance().getApplicationUrl());
+        driver.navigate().to(getInstance().getWebApplicationUrl());
         driver.manage().deleteAllCookies();
 
-        driver.manage().timeouts().implicitlyWait(ConfigFileReader.getInstance().getImplicitlyWait(), TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(getInstance().getImplicitlyWait(), TimeUnit.SECONDS);
         return driver;
     }
 

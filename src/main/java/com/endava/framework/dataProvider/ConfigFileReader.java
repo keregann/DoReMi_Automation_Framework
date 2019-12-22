@@ -53,11 +53,11 @@ public class ConfigFileReader {
         return properties.getProperty("browser");
     }
 
-    public String getPageObjectPath(){
+    public String getPageObjectPath() {
         return properties.getProperty("pageObjectPath");
     }
 
-    public String getApplicationUrl() {
+    public String getWebApplicationUrl() {
         return properties.getProperty("url");
     }
 }

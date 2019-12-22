@@ -14,8 +14,9 @@ public class ReflectionManager {
 
     public static Class currentPageClass;
     private static Method[] currentPageMethods;
-    private static Logger log = Logger.getLogger(ReflectionManager.class);
     private static WebDriverWait wait;
+    private static Logger log = Logger.getLogger(ReflectionManager.class);
+
 
     public static boolean pageInit(String pageName) throws Exception {
         boolean isInitialized = false;

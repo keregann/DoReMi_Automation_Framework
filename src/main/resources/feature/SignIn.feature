@@ -2,7 +2,7 @@
 Feature: Login functionality
 
   @login
-  Scenario: Login with valid credentials
+  Scenario: US_1_TC_1 Login with valid credentials
     Given 'Home' page is displayed
     When user clicks 'My Account'
     And user clicks 'Login Button'
@@ -17,8 +17,7 @@ Feature: Login functionality
     And user clicks 'Logout'
     Then 'Login' page is displayed
 
-
-  Scenario: Login with invalid valid credentials
+  Scenario: US_1_TC_2 Login with invalid valid credentials
     Given 'Home' page is displayed
     When user clicks 'My Account'
     And user clicks 'Login Button'
