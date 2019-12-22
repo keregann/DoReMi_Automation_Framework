@@ -1,65 +1,33 @@
+#@Ion
 Feature:User book hotel
-#Scenario 1
-  @Ion
-  Scenario:User book hotel as guest
+
+  Scenario:TC_1 User book hotel as guest
     Given 'Home' page is displayed
     When user clicks 'Hotels'
     Then 'Hotels Tab' page is displayed
     When user chooses 'Chisinau' for 'destination'
-    When user enters the following values:
+    And user enters the following values:
       | checkIn  | 28/12/2019 |
       | checkOut | 31/12/2019 |
+    And user sets '2' person for 'Adults'
+    And user sets '1' person for 'Child'
     And user clicks 'Search'
     Then 'Hotels' page is displayed
     When user clicks 'Details Button'
     Then 'Hotel Details' page is displayed
-    And user clicks 'See Price and Date Button'
+    When user clicks 'See Price and Date Button'
     And user clicks 'Book Now Button'
     Then 'Booking Details' page is displayed
+    When from the 'Title' user chooses 'Mrs.'
     When user enters the following values:
       | firstName | Ion                |
       | lastName  | Drone              |
       | email     | ion.drone@mail.com |
       | phone     | 06868686868        |
-    And user clicks the 'Complete Booking Button'
+    And user clicks 'Complete Booking' button
     Then 'Payment' page is displayed
 
-#Scenario 2
-  @Ion
-  Scenario:User book hotel with account
-    Given 'Home' page is displayed
-    When user clicks 'My Account'
-    And user clicks 'Login Button'
-    Then 'Login' page is displayed
-    When user enters the following values:
-      | email    | user@phptravels.com |
-      | password | demouser            |
-    And user clicks 'Login Button'
-    Then 'User Account' page is displayed
-    When user clicks 'Hotels'
-    Then 'Hotels Tab' page is displayed
-    When user chooses 'Chisinau' for 'destination'
-    When user enters the following values:
-      | checkIn  | 28/12/2019 |
-      | checkOut | 31/12/2019 |
-    And user clicks 'Search'
-    Then 'Hotels' page is displayed
-    When user clicks 'Details Button'
-    Then 'Hotel Details' page is displayed
-    And user clicks 'See Price and Date Button'
-    And user clicks 'Book Now Button'
-    Then 'Booking Details' page is displayed
-    When user enters the following values:
-      | firstName | Ion                |
-      | lastName  | Drone              |
-      | email     | ion.drone@mail.com |
-      | phone     | 06868686868        |
-    And user clicks the 'Complete Booking Button'
-    Then 'Payment' page is displayed
-
-# Scenario 3
-  @Ion
-  Scenario:User modify the hotel destination and booking date
+  Scenario:TC_2 User book hotel with account
     Given 'Home' page is displayed
     When user clicks 'My Account'
     And user clicks 'Login Button'
@@ -72,16 +40,58 @@ Feature:User book hotel
     When user clicks 'Hotels'
     Then 'Hotels Tab' page is displayed
     When user chooses 'Chisinau' for 'destination'
-    When user enters the following values:
+    And user enters the following values:
       | checkIn  | 28/12/2019 |
       | checkOut | 31/12/2019 |
+    And user sets '2' person for 'Adults'
+    And user sets '1' person for 'Child'
     And user clicks 'Search'
     Then 'Hotels' page is displayed
     When user clicks 'Details Button'
     Then 'Hotel Details' page is displayed
-    And user clicks 'See Price and Date Button'
-    #    incepem de aici
+    When user clicks 'See Price and Date Button'
+    And user clicks 'Book Now Button'
+    Then 'Booking Details' page is displayed
+    When user enters the following values:
+      | firstName | Ross                |
+      | lastName  | Brown               |
+      | email     | ross.brown@mail.com |
+      | phone     | 0789981145          |
+    And user clicks 'Complete Booking' button
+    Then 'Payment' page is displayed
 
+
+  Scenario:TC_3 User modify the booking date
+    Given 'Home' page is displayed
+    When user clicks 'My Account'
+    And user clicks 'Login Button'
+    Then 'Login' page is displayed
+    When user enters the following values:
+      | email    | user@phptravels.com |
+      | password | demouser            |
+    And user clicks 'Login Button'
+    Then 'User Account' page is displayed
+    When user clicks 'Hotels'
+    Then 'Hotels Tab' page is displayed
+    When user chooses 'Chisinau' for 'destination'
+    And user enters the following values:
+      | checkIn  | 28/12/2019 |
+      | checkOut | 31/12/2019 |
+    And user sets '2' person for 'Adults'
+    And user sets '1' person for 'Child'
+    And user clicks 'Search'
+    Then 'Hotels' page is displayed
+    When user clicks 'Details Button'
+    Then 'Hotel Details' page is displayed
+    When user clicks 'See Price and Date Button'
+    When user enters the following values:
+      | checkIn  | 27/12/2019 |
+      | checkOut | 30/12/2019 |
+    And user clicks 'Search' button
+    Then 'Hotels' page is displayed
+    When user clicks 'Details Button'
+    Then 'Hotel Details' page is displayed
+    When user clicks 'See Price and Date Button'
     And user clicks 'Book Now Button'
     Then 'Booking Details' page is displayed
     When user enters the following values:
@@ -89,11 +99,9 @@ Feature:User book hotel
       | lastName  | Drone              |
       | email     | ion.drone@mail.com |
       | phone     | 06868686868        |
-    And user clicks the 'Complete Booking Button'
+    And user clicks 'Complete Booking' button
     Then 'Payment' page is displayed
 
-##Scenario 4
-  @Ion
   Scenario Outline:User book hotel using invalid destination details
     Given 'Home' page is displayed
     When user clicks 'My Account'
@@ -119,9 +127,6 @@ Feature:User book hotel
       | Bucharest   | 17/13/2006 | 31/12/2019 |
       | Bucharest   | 28/12/2019 | 17/13/2006 |
 
-
-#Scenario 5
-  @Ion
   Scenario Outline:User book hotel using invalid personal information
     Given 'Home' page is displayed
     When user clicks 'My Account'
@@ -150,19 +155,12 @@ Feature:User book hotel
       | lastName  | <last name>  |
       | email     | <email>      |
       | phone     | <phone>      |
-    And user clicks the 'Complete Booking Button'
+    And user clicks 'Complete Booking' button
 #    Then warning message will be displayed in fields with invalid data
     Examples:
-      | first name | last name    | email              | phone             |
-      | Ion        | Drone        | ion.drone@mail.com | 06868686868       |
-      | Ion        | Drone        | ion.drone@mail.com | 06868686868       |
-      |            | Drone        | ion.drone@mail.com | 06868686868       |
-      | Ion        |              | ion.drone@mail.com | 06868686868       |
-      | Ion        | Drone        | ion.drone@mail.com | 06868686868       |
-      | Ion        | Drone        |                    | 06868686868       |
-      | Ion        | Drone        | ion.drone@mail.com |                   |
-      |            |              |                    |                   |
-      | Ion*43//*  | Drone3424^%- | ion.dronemail.com  | 06868686868686868 |
+      | first name | last name    | email             | phone            |
+      | Ion*43//*  | Drone3424^%- | ion.dronemail.com | 068686868dsdd868 |
+      |            |              |                   |                  |
 
 
 

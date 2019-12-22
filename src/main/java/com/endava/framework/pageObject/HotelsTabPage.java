@@ -20,6 +20,13 @@ public class HotelsTabPage extends BasePage {
     @FindBy(xpath = "//input[@id='checkout']")
     private WebElement checkOut;
 
+    @FindBy(xpath = "//div[contains(@class,'col o2')]//div[contains(@class,'bootstrap-touchspin bootstrap-touchspin-injected')]")
+    private WebElement adults;
+
+
+    @FindBy(xpath = "//div[contains(@class,'col 01')]//div[contains(@class,'bootstrap-touchspin bootstrap-touchspin-injected')]")
+    private WebElement child;
+
     @FindBy(xpath = "//div[@class='col-md-2 col-xs-12 o1']//button[@class='btn btn-primary btn-block'][contains(text(),'Search')]")
     private WebElement search;
 
