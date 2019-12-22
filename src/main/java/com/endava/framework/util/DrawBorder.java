@@ -9,5 +9,4 @@ public class DrawBorder {
         JavascriptExecutor jse = (JavascriptExecutor) WebDriverManager.driver;
         jse.executeScript("arguments[0].style.border='3px solid red'", element_node);
     }
-
 }

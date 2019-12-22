@@ -1,6 +1,6 @@
 package com.endava.framework.cucumber;
 
-
+import com.endava.framework.manager.ReflectionManager;
 import com.endava.framework.manager.WebDriverManager;
 import cucumber.api.DataTable;
 import org.apache.log4j.Logger;
@@ -19,6 +19,7 @@ import java.util.Map;
 import static com.endava.framework.cucumber.assertion.Assertions.isDisplayed;
 import static com.endava.framework.cucumber.assertion.Assertions.moveTo;
 import static com.endava.framework.manager.ReflectionManager.getWebElement;
+import static com.endava.framework.manager.ReflectionManager.getWebElements;
 import static com.endava.framework.util.DrawBorder.drawBorder;
 import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOf;
 
@@ -55,20 +56,40 @@ public class MyActions {
     public void inputDataTable(DataTable params) {
         Map<String, String> values = new LinkedHashMap<>(params.asMap(String.class, String.class));
         values.forEach((key, value) -> {
-            isDisplayed(getWebElement(key)).sendKeys(value);
+            WebElement webElement = getWebElement(key);
+            isDisplayed(webElement).click();
+            webElement.clear();
+            webElement.sendKeys(value);
             log.info(value + " introduced into " + key);
         });
     }
 
+    public void scrollPage(String element) {
+        WebElement webElement = getWebElement(element.replace(" ", ""));
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].scrollIntoView();", webElement);
+    }
+
+    public void dropDownList(String element, String values) {
+        WebElement webElement = getWebElement(element.replace(" ", ""));
+        wait.until(ExpectedConditions.elementToBeClickable(webElement));
+        drawBorder(webElement);
+        webElement.click();
+        List<WebElement> webElements = getWebElements(element.replace(" ", "") + "Options");
+        for (WebElement e : webElements) {
+            if (e.getText().contains(values)) {
+                drawBorder(e);
+                e.click();
+                break;
+            }
+        }
+    }
+
     public void inputLocation(String elementName, String value) {
         WebElement webElement = getWebElement(elementName.replace(" ", ""));
-        // JavascriptExecutor jse = (JavascriptExecutor) WebDriverManager.driver;
         drawBorder(webElement);
-        wait.until(ExpectedConditions.visibilityOf(webElement));
         webElement.click();
-        actions.sendKeys(webElement, value).build().perform();
-
-        // webElement.sendKeys(value);
+        webElement.sendKeys(value);
         WebElement foundElement = driver.findElement(By.xpath("//div//span[contains(text(),'" + value + "')]"));
         wait.until(visibilityOf(foundElement));
         drawBorder(foundElement);
@@ -93,51 +114,47 @@ public class MyActions {
             drawBorder(endDate);
             wait.until(ExpectedConditions.elementToBeClickable(endDate)).click();
             log.info(value + " set to " + elementName);
+        } else if (elementName.equalsIgnoreCase("Date")) {
+            WebElement date = driver.findElement(By.xpath("/html[1]/body[1]/div[3]/div[6]/div[1]/div[1]/div[2]/div[" + value + "]"));
+            drawBorder(date);
+            wait.until(ExpectedConditions.elementToBeClickable(date)).click();
+            log.info(value + " set to " + elementName);
         }
     }
 
-    public void dropDownList(String element, String value) {
-        WebElement webElement = getWebElement(element.replace(" ", ""));
-        drawBorder(webElement);
-        webElement.click();
-        log.info(element + " is clicked");
-        List<WebElement> listOf = WebDriverManager.driver.findElements(By.xpath("//li[@data-option-array-index]"));
-        for (WebElement e : listOf) {
-            if (e.getText().equalsIgnoreCase(value)) {
-                drawBorder(e);
-                e.click();
-                log.info(value + " is clicked");
-                break;
-            }
+    public void setPassengers(Integer numberOf, String name) {
+        if (ReflectionManager.currentPageClass.getName().contains("HotelsTabPage")) {
+            setPersons(numberOf, name, 0, 1);
+        } else if (ReflectionManager.currentPageClass.getName().contains("FlightsTabPage")) {
+            setPersons(numberOf, name, 2, 3, 4);
+        } else if (ReflectionManager.currentPageClass.getName().contains("ToursTabPage")) {
+            setPersons(numberOf, name, 5);
         }
     }
 
-    public void setPersons(int number, String name) {
+    private void setPersons(Integer number, String name, int... key) {
         WebElement personType = getWebElement(name);
         drawBorder(personType);
         List<WebElement> plusButtons = WebDriverManager.driver
                 .findElements(By.xpath("//button[@class='btn btn-white bootstrap-touchspin-up ']"));
         switch (name) {
             case "Adults":
-                drawBorder(plusButtons.get(2));
                 for (int i = 0; i <= number - 2; i++) {
-                    plusButtons.get(2).click();
+                    drawBorder(plusButtons.get(key[0]));
+                    plusButtons.get(key[0]).click();
                 }
-                log.info(number + " persons added to " + name);
                 break;
             case "Child":
-                drawBorder(plusButtons.get(3));
                 for (int i = 0; i <= number - 1; i++) {
-                    plusButtons.get(3).click();
+                    drawBorder(plusButtons.get(key[1]));
+                    plusButtons.get(key[1]).click();
                 }
-                log.info(number + " persons added to " + name);
                 break;
             case "Infant":
-                drawBorder(plusButtons.get(4));
                 for (int i = 0; i <= number - 1; i++) {
-                    plusButtons.get(4).click();
+                    drawBorder(plusButtons.get(key[2]));
+                    plusButtons.get(key[2]).click();
                 }
-                log.info(number + " persons added to " + name);
                 break;
         }
     }
@@ -149,7 +166,7 @@ public class MyActions {
         wait.until(ExpectedConditions.visibilityOf(fromSlider));
         actions.moveToElement(fromSlider);
         drawBorder(fromSlider);
-        actions.clickAndHold().moveByOffset(50, 0).release().build().perform();
+        actions.clickAndHold().moveByOffset(30, 0).release().build().perform();
         WebElement toSlider = getWebElement("toSlider");
         wait.until(ExpectedConditions.visibilityOf(toSlider));
         actions.moveToElement(toSlider);

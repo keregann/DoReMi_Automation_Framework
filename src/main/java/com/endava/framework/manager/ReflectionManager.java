@@ -9,6 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.List;
 
 public class ReflectionManager {
 
@@ -49,6 +50,22 @@ public class ReflectionManager {
             log.error(exception.getStackTrace());
         }
         return webElement;
+    }
+
+    public static List<WebElement> getWebElements(String element) {
+        List<WebElement> webElementList = null;
+        try {
+            for (Method method : currentPageMethods) {
+                if (method.getName().equalsIgnoreCase("get" + element)) {
+                    webElementList = (List<WebElement>) method.invoke(currentPageClass.newInstance());
+                    break;
+                }
+            }
+        } catch (IllegalArgumentException | InvocationTargetException | IllegalAccessException | InstantiationException exception) {
+            exception.printStackTrace();
+            log.error(exception.getStackTrace());
+        }
+        return webElementList;
     }
 }
 

@@ -58,7 +58,7 @@ public class Steps {
 
     @And("^user sets '(.*)' person for '(.*)'$")
     public void userSetsPersonForAdults(int number, String name) {
-        myActions.setPersons(number, name);
+        myActions.setPassengers(number, name);
     }
 
     @When("^user sets the price range$")
