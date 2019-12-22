@@ -4,6 +4,8 @@ import lombok.Getter;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import java.util.List;
+
 @Getter
 public class HomePage extends BasePage {
     private final String url = "https://www.phptravels.net/index.php";
@@ -22,4 +24,13 @@ public class HomePage extends BasePage {
 
     @FindBy(xpath = "//a[contains(@class,'text-center flights')]")
     private WebElement flightsTab;
+
+    @FindBy(xpath = "//a[contains(@class,'text-center tours')]")
+    private WebElement toursTab;
+
+    @FindBy(xpath = "//h2[contains(text(),'Featured Tours')]")
+    private WebElement featuredTours;
+
+    @FindBy(xpath = "//div[@class='col']//span//span")
+    private List<WebElement> featuredToursOptions;
 }

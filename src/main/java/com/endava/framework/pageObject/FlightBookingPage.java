@@ -1,114 +1,88 @@
 package com.endava.framework.pageObject;
 
 import lombok.Getter;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+
+import java.util.List;
 
 @Getter
 public class FlightBookingPage extends BasePage {
 
+
     private final String url = "https://www.phptravels.net/thflights/checkout";
-//    @FindBy(xpath = "//select[@id='title']")
-//    WebElement titleDropDown;
-//
-//    @FindBy(xpath = "//option[contains(text(),'Mr.')]")
-//    WebElement titleOption;
-//
-//    @FindBy(xpath = "//input[@id='name']")
-//    WebElement nameField;
-//
-//    @FindBy(xpath = "//input[@id='surname']")
-//    WebElement surnameField;
-//
-//    @FindBy(xpath = "//input[@id='email']")
-//    WebElement emailField;
-//
-//    @FindBy(xpath = "//input[@id='phone']")
-//    WebElement phoneField;
-//
-//    @FindBy(xpath = "//input[@id='birthday']")
-//    WebElement birthdayField;
-//
-//    @FindBy(xpath = "//input[@id='cardno']")
-//    WebElement passportField;
-//
-//    @FindBy(xpath = "//input[@id='expiration']")
-//    WebElement expirationPassportDate;
-//
-//    @FindBy(xpath = "//a[@class='select2-choice']")
-//    WebElement nationalityDropDown;
-//
-//    @FindBy(xpath = "//div[contains(text(),'MOLDOVA, REPUBLIC OF')]")
-//    WebElement nationalityOption;
-//
-//    //Payment Types
-//    @FindBy(xpath = "//select[@id='cardtype']")
-//    WebElement cardTypeDropDown;
-//
-//    @FindBy(xpath = "//option[contains(text(),'Visa')]")
-//    WebElement cardTypeOption;
-//
-//    @FindBy(xpath = "//input[@id='card-number']")
-//    WebElement cardNumber;
-//
-//    @FindBy(xpath = "//select[@id='expiry-month']")
-//    WebElement cardExpirationMonth;
-//
-//    @FindBy(xpath = "//option[contains(text(),'Apr (04)')]")
-//    WebElement cardExpirationMonthOption;
-//
-//    @FindBy(xpath = "//select[@id='expiry-year']")
-//    WebElement cardExpirationYear;
-//
-//    @FindBy(xpath = "//option[contains(text(),'2022')]")
-//    WebElement cardExpirationYearOption;
-//
-//    @FindBy(xpath = "//input[@id='cvv']")
-//    WebElement cvvField;
-//
-//
-//    //Confirmation
-//    @FindBy(xpath = "//label[contains(text(),'By clicking to complete this booking I acknowledge')]")
-//    WebElement acceptRulesCheckBox;
-//
-//    @FindBy(xpath = "//button[@id='confirmBooking']")
-//    WebElement confirmBtn;
-//
-////    JavascriptExecutor js = (JavascriptExecutor) driver;
-////
-////    public FlightBookingPage enterData() throws InterruptedException {
-////        js.executeScript("window.scrollBy(0,200)");
-////        titleDropDown.click();
-////        Thread.sleep(500);
-////        titleOption.click();
-////        nameField.sendKeys("Alex");
-////        surnameField.sendKeys("Fasii");
-////        emailField.sendKeys("user@phptravels.com");
-////        phoneField.sendKeys("+37379371306");
-////        birthdayField.sendKeys("1990-01-01");
-////        passportField.sendKeys("85694123");
-////        expirationPassportDate.sendKeys("2020-01-01");
-////        nationalityDropDown.click();
-////        Thread.sleep(500);
-////        nationalityOption.click();
-////
-////        js.executeScript("window.scrollBy(0,500)");
-////        Thread.sleep(2000);
-////
-////
-////        //Payments
-////        cardTypeDropDown.click();
-////        cardTypeOption.click();
-////        cardNumber.sendKeys("4562359867451234");
-////        cardExpirationMonth.click();
-////        cardExpirationMonthOption.click();
-////        cardExpirationYear.click();
-////        cardExpirationYearOption.click();
-////        cvvField.sendKeys("965");
-////        acceptRulesCheckBox.click();
-////        confirmBtn.click();
-////
-////        return this;
-////    }
+
+    @FindBy(xpath = "//span[contains(text(),'Billing Address')]")
+    WebElement billingAddress;
+
+    @FindBy(xpath = "//h6[contains(text(),'Payment Types')]")
+    WebElement paymentTypes;
+
+    @FindBy(xpath = "//select[@id='title']")
+    WebElement title;
+
+    @FindBy(xpath = "//select[@id='title']//option")
+    List<WebElement> titleOptions;
+
+    @FindBy(xpath = "//input[@id='name']")
+    WebElement name;
+
+    @FindBy(xpath = "//input[@id='surname']")
+    WebElement surname;
+
+    @FindBy(xpath = "//input[@id='email']")
+    WebElement email;
+
+    @FindBy(xpath = "//input[@id='phone']")
+    WebElement phone;
+
+    @FindBy(xpath = "//input[@id='birthday']")
+    WebElement birthday;
+
+    @FindBy(xpath = "//input[@id='cardno']")
+    WebElement passport;
+
+    @FindBy(xpath = "//input[@id='expiration']")
+    WebElement expirationDate;
+
+    @FindBy(xpath = "//a[@class='select2-choice']")
+    WebElement nationality;
+
+    @FindBy(xpath = "//div[contains(text(),'MOLDOVA, REPUBLIC OF')]")
+    WebElement nationalityOption;
+
+    //Payment Types
+    @FindBy(xpath = "//select[@id='cardtype']")
+    WebElement cardType;
+
+    @FindBy(xpath = "//select[@id='cardtype']//option")
+    List<WebElement> cardTypeOptions;
+
+    @FindBy(xpath = "//input[@id='card-number']")
+    WebElement cardNumber;
+
+    @FindBy(xpath = "//select[@id='expiry-month']")
+    WebElement expiryMonth;
+
+    @FindBy(xpath = "//select[@id='expiry-month']//option")
+    List<WebElement> expiryMonthOptions;
+
+    @FindBy(xpath = "//select[@id='expiry-year']")
+    WebElement expiryYear;
+
+    @FindBy(xpath = "//select[@id='expiry-year']//option")
+    List<WebElement> expiryYearOptions;
+
+    @FindBy(xpath = "//input[@id='cvv']")
+    WebElement cvv;
+
+    @FindBy(xpath = "//strong[@class='RTL go-right']")
+    WebElement readTheTerms;
+
+    //Confirmation
+    @FindBy(xpath = "//label[contains(text(),'By clicking to complete this booking I acknowledge')]")
+    WebElement acceptCheckBox;
+
+    @FindBy(xpath = "//button[@id='confirmBooking']")
+    WebElement availabilityCheckingButton;
 }

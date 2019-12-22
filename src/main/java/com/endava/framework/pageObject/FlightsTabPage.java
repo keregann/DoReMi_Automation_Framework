@@ -19,8 +19,11 @@ public class FlightsTabPage extends BasePage {
     @FindBy(xpath = "//label[contains(text(),'Round Trip')]")
     WebElement roundTripButton;
 
-    @FindBy(xpath = "//span[contains(text(),'Economy')]")
-    WebElement dropDownList;
+    @FindBy(xpath = "//div[@class='form-icon-left flightclass']")
+    WebElement flightClass;
+
+    @FindBy(xpath = "//ul[@class='chosen-results']//li")
+    List<WebElement> flightClassOptions;
 
     @FindBy(xpath = "//div[@id='s2id_location_from']//a[@class='select2-choice']")
     WebElement from;
@@ -51,6 +54,8 @@ public class FlightsTabPage extends BasePage {
 
     @FindBy(xpath = "//div[@class='col-xs-12 col-md-1']//button[contains(text(),'Search')]")
     WebElement searchButton;
+
+
 }
 
 
