@@ -1,7 +1,7 @@
 @Margarita
 Feature: Sign Up functionality
 
-  Scenario: SignUp with valid credentials
+  Scenario: US_2_TC_1 SignUp with valid credentials
     Given 'Home' page is displayed
     When user clicks 'My Account'
     And user clicks 'Sign Up'
@@ -10,7 +10,7 @@ Feature: Sign Up functionality
       | firstName    | Pop                   |
       | lastName     | Diana                 |
       | mobileNumber | 06521347              |
-      | email        | abrakadabra26@mail.ru |
+      | email        | abrakadabra28@mail.ru |
       | password     | 0123456               |
       | confirm      | 0123456               |
     And user clicks 'Sign Up'
@@ -19,7 +19,7 @@ Feature: Sign Up functionality
     And user clicks 'Logout'
     Then 'Login' page is displayed
 
-  Scenario: Validate all fields on Sing Up page
+  Scenario: US_2_TC_2 Validate all fields on Sing Up page
     Given 'Home' page is displayed
     When user clicks 'My Account'
     And user clicks 'Sign Up'
@@ -27,7 +27,7 @@ Feature: Sign Up functionality
     When user clicks 'Sign Up'
     Then warning 'INVALID_EMAIL' is present on the page
 
-  Scenario: Validate the connection between Password and Confirm Password
+  Scenario: US_2_TC_3 Validate the connection between Password and Confirm Password
     Given 'Home' page is displayed
     When user clicks 'My Account'
     And user clicks 'Sign Up'
@@ -38,8 +38,7 @@ Feature: Sign Up functionality
     And user clicks 'Sign Up'
     Then warning 'INVALID_MATCHING_OF_PASSWORD' is present on the page
 
-
-  Scenario Outline: Validate Email and Password fields on Sing Up page
+  Scenario Outline: US_2_TC_4 Validate Email and Password fields on Sing Up page
     Given 'Home' page is displayed
     When user clicks 'My Account'
     And user clicks 'SignUp'

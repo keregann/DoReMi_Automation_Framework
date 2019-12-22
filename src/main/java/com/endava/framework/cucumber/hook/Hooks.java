@@ -20,14 +20,14 @@ public class Hooks {
     private static Logger log = Logger.getLogger(Hooks.class);
 
     @Before
-    public void BeforeSteps(Scenario scenario) {
+    public void BeforeScenario(Scenario scenario) {
         log.info("-----Start of scenario-----");
         WebDriverManager.createDriver();
         makeDir(scenario.getName());
     }
 
     @After
-    public void AfterSteps(Scenario scenario) {
+    public void AfterScenario() {
         log.info("-----End of scenario-----");
         WebDriverManager.closeDriver();
     }

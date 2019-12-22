@@ -8,6 +8,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -22,19 +23,19 @@ import static com.endava.framework.util.DrawBorder.drawBorder;
 import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOf;
 
 
-public class Actions {
-    private static Logger log = Logger.getLogger(Actions.class);
+public class MyActions {
+    private static Logger log = Logger.getLogger(MyActions.class);
     private static WebDriver driver;
     private WebDriverWait wait;
-    org.openqa.selenium.interactions.Actions actions;
+    private Actions actions;
 
-    public Actions() {
+    public MyActions() {
         driver = WebDriverManager.driver;
         wait = new WebDriverWait(WebDriverManager.driver, 10);
-        actions = new org.openqa.selenium.interactions.Actions(WebDriverManager.driver);
+        actions = new Actions(WebDriverManager.driver);
     }
 
-    public void click(String elementName) throws Exception {
+    public void click(String elementName) {
         WebElement webElement = getWebElement(elementName.replace(" ", ""));
         wait.until(ExpectedConditions.visibilityOf(webElement));
         drawBorder(webElement);
@@ -45,30 +46,17 @@ public class Actions {
 
     public void clickJS(String elementName) {
         WebElement webElement = getWebElement(elementName.replace(" ", ""));
-        // drawBorder(webElement);
         JavascriptExecutor jse = (JavascriptExecutor) WebDriverManager.driver;
         jse.executeScript("arguments[0].click()", webElement);
         log.info(webElement + " is clicked");
     }
 
-    public void input(String elementName, String value) {
-        WebElement webElement = getWebElement(elementName.replace(" ", ""));
-        wait.until(visibilityOf(webElement));
-        drawBorder(webElement);
-        webElement.sendKeys(value);
-        log.info(webElement + " input: " + value);
-    }
 
     public void inputDataTable(DataTable params) {
         Map<String, String> values = new LinkedHashMap<>(params.asMap(String.class, String.class));
         values.forEach((key, value) -> {
-            try {
-                isDisplayed(getWebElement(key)).sendKeys(value);
-                log.info(value + " introduced into " + key);
-            } catch (InterruptedException exception) {
-                exception.printStackTrace();
-                log.error(exception.getStackTrace());
-            }
+            isDisplayed(getWebElement(key)).sendKeys(value);
+            log.info(value + " introduced into " + key);
         });
     }
 
@@ -168,6 +156,14 @@ public class Actions {
         drawBorder(toSlider);
         actions.clickAndHold().moveByOffset(-60, 0).release().build().perform();
         log.info(" to slider moved");
+    }
+
+    public void input(String elementName, String value) {
+        WebElement webElement = getWebElement(elementName.replace(" ", ""));
+        wait.until(visibilityOf(webElement));
+        drawBorder(webElement);
+        webElement.sendKeys(value);
+        log.info(webElement + " input: " + value);
     }
 
 }

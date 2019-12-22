@@ -1,9 +1,8 @@
 package com.endava.framework.cucumber.stepdef;
 
 import com.endava.framework.constant.WarningMessages;
-import com.endava.framework.cucumber.Actions;
+import com.endava.framework.cucumber.MyActions;
 import com.endava.framework.cucumber.assertion.Assertions;
-import com.endava.framework.manager.WebDriverManager;
 import cucumber.api.DataTable;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
@@ -14,7 +13,7 @@ import static com.endava.framework.dataProvider.ConfigFileReader.getScreenShotFl
 import static com.endava.framework.util.ScreenShotsMaker.takeScreenshot;
 
 public class Steps {
-    private Actions actions = new Actions();
+    private MyActions myActions = new MyActions();
 
     @Given("^'(.*)' page is displayed$")
     public void pageIsDisplayed(String pageName) throws Exception {
@@ -23,29 +22,28 @@ public class Steps {
 
     @When("^user clicks '(.*)'$")
     public void click(String webElementName) throws Exception {
-        actions.click(webElementName);
+        myActions.click(webElementName);
         takeScreenshot(getScreenShotFlag());
     }
 
     @When("^user enters the following values:$")
     public void userEntersTheFollowingValues(DataTable params) {
-        actions.inputDataTable(params);
+        myActions.inputDataTable(params);
     }
 
     @And("^user chooses '(.*)' for '(.*)'$")
     public void userChoosesForLocation(String value, String elementName) throws InterruptedException {
-        actions.inputLocation(elementName, value);
+        myActions.inputLocation(elementName, value);
     }
-
 
     @And("^user sets '(.*)' date for '(.*)'$")
     public void userSetsDateForDepartCalendar(String value, String elementName) throws Exception {
-        actions.inputFlightsDate(elementName, value);
+        myActions.inputFlightsDate(elementName, value);
     }
 
     @And("^user clicks the '(.*)'$")
     public void userClicksTheCompleteBookingButton(String elementName) throws Exception {
-        actions.clickJS(elementName);
+        myActions.clickJS(elementName);
     }
 
     @Then("^warning '(.*)' is present on the page$")
@@ -55,16 +53,16 @@ public class Steps {
 
     @And("^from the '(.*)' user chooses '(.*)'$")
     public void fromTheDropDownListUserChoosesValue(String element, String value) {
-        actions.dropDownList(element, value);
+        myActions.dropDownList(element, value);
     }
 
     @And("^user sets '(.*)' person for '(.*)'$")
     public void userSetsPersonForAdults(int number, String name) {
-        actions.setPersons(number, name);
+        myActions.setPersons(number, name);
     }
 
     @When("^user sets the price range$")
     public void userSetsThePriceRange() {
-        actions.dragAndDrop();
+        myActions.dragAndDrop();
     }
 }
