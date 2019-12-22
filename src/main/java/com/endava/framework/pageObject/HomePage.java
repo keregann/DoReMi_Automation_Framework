@@ -13,6 +13,9 @@ public class HomePage extends BasePage {
     @FindBy(xpath = "//a[contains(text(),'Hotels')]")
     private WebElement hotels;
 
+    @FindBy(xpath = "//a[contains(text(),'Visa')]")
+    private WebElement visa;
+
     @FindBy(xpath = "(//a[@id='dropdownCurrency'])[2]")
     private WebElement myAccount;
 

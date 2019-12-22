@@ -11,15 +11,19 @@ public class HotelDetailsPage extends BasePage {
     @FindBy(xpath = "//a[@class='anchor btn btn-primary btn-wide mt-5']")
     private WebElement seePriceAndDateButton;
 
-    //the first from list
     @FindBy(xpath = "//div[@class='room-item-wrapper']//div[2]//div[1]//div[2]//div[1]//div[2]//form[1]//button[1]")
     private WebElement bookNowButton;
 
-    //input[@class='select2-input']
+    @FindBy(xpath = "//*[@id='select2-drop']/div/input")
+    private WebElement destination;
 
-    //input[@id='checkin']
+    @FindBy(xpath = "//input[@id='checkin']")
+    private WebElement checkIn;
 
-    //input[@id='checkout']
+    @FindBy(xpath = "//input[@id='checkout']")
+    private WebElement checkOut;
 
+    @FindBy(xpath = "//button[contains(@class,'btn btn-primary btn-block')]")
+    private WebElement search;
 }
 

@@ -21,6 +21,7 @@ import static com.endava.framework.cucumber.assertion.Assertions.moveTo;
 import static com.endava.framework.manager.ReflectionManager.getWebElement;
 import static com.endava.framework.manager.ReflectionManager.getWebElements;
 import static com.endava.framework.util.DrawBorder.drawBorder;
+import static org.openqa.selenium.support.ui.ExpectedConditions.elementToBeClickable;
 import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOf;
 
 
@@ -45,7 +46,7 @@ public class MyActions {
     }
 
 
-    public void clickJS(String elementName) {
+    public void forceClick(String elementName) {
         WebElement webElement = getWebElement(elementName.replace(" ", ""));
         JavascriptExecutor jse = (JavascriptExecutor) WebDriverManager.driver;
         jse.executeScript("arguments[0].click()", webElement);
@@ -89,6 +90,19 @@ public class MyActions {
         WebElement webElement = getWebElement(elementName.replace(" ", ""));
         drawBorder(webElement);
         webElement.click();
+        webElement.sendKeys(value);
+        WebElement foundElement = driver.findElement(By.xpath("//div//span[contains(text(),'" + value + "')]"));
+        wait.until(visibilityOf(foundElement));
+        drawBorder(foundElement);
+        foundElement.click();
+        log.info(webElement.getText() + " input: " + value);
+    }
+
+    public void inputDestination(String elementName, String value) {
+        WebElement webElement = getWebElement(elementName.replace(" ", ""));
+        drawBorder(webElement);
+        JavascriptExecutor jse = (JavascriptExecutor) WebDriverManager.driver;
+        jse.executeScript("arguments[0].click()", webElement);
         webElement.sendKeys(value);
         WebElement foundElement = driver.findElement(By.xpath("//div//span[contains(text(),'" + value + "')]"));
         wait.until(visibilityOf(foundElement));
