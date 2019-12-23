@@ -10,10 +10,10 @@ import java.util.Properties;
 public class ConfigFileReader {
     private final String propertyFilePath = "src/main/resources/application.properties";
     private static Properties properties;
-    private static ConfigFileReader configFileReader = new ConfigFileReader();
+    private static ConfigFileReader configFileReader;
     private static Logger log = Logger.getLogger(ConfigFileReader.class);
 
-    public ConfigFileReader() {
+    private ConfigFileReader() {
         try (BufferedReader reader = new BufferedReader(new FileReader(propertyFilePath))) {
             properties = new Properties();
             properties.load(reader);
@@ -24,6 +24,9 @@ public class ConfigFileReader {
     }
 
     public static ConfigFileReader getInstance() {
+        if (configFileReader == null) {
+            configFileReader = new ConfigFileReader();
+        }
         return configFileReader;
     }
 

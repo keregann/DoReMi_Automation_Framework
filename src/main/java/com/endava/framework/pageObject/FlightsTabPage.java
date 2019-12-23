@@ -11,49 +11,49 @@ public class FlightsTabPage extends BasePage {
     private final String url = "https://www.phptravels.net/index.php";
 
     @FindBy(xpath = "//label[contains(text(),'One Way')]")
-    WebElement flightsTab;
+    private WebElement flightsTab;
 
     @FindBy(xpath = "//label[contains(text(),'One Way')]")
-    WebElement oneWayButton;
+    private WebElement oneWayButton;
 
     @FindBy(xpath = "//label[contains(text(),'Round Trip')]")
-    WebElement roundTripButton;
+    private WebElement roundTripButton;
 
     @FindBy(xpath = "//div[@class='form-icon-left flightclass']")
-    WebElement flightClass;
+    private WebElement flightClass;
 
     @FindBy(xpath = "//ul[@class='chosen-results']//li")
-    List<WebElement> flightClassOptions;
+    private List<WebElement> flightClassOptions;
 
     @FindBy(xpath = "//div[@id='s2id_location_from']//a[@class='select2-choice']")
-    WebElement from;
+    private WebElement from;
 
     @FindBy(xpath = "//div[@id='s2id_location_to']//a[@class='select2-choice']")
-    WebElement to;
+    private WebElement to;
 
     @FindBy(xpath = "//input[@id='FlightsDateStart']")
-    WebElement departCalendar;
+    private WebElement departCalendar;
 
     @FindBy(xpath = "//input[@id='FlightsDateEnd']")
-    WebElement returnCalendar;
+    private WebElement returnCalendar;
 
     @FindBy(xpath = "//input[@name='fadults']")
-    WebElement adults;
+    private WebElement adults;
 
     @FindBy(xpath = "//input[@name='fchildren']")
-    WebElement child;
+    private WebElement child;
 
     @FindBy(xpath = "//input[@name='finfant']")
-    WebElement infant;
+    private WebElement infant;
 
     @FindBy(xpath = "//div[@class='col-4']//button[@class='btn btn-white bootstrap-touchspin-up ']")
-    WebElement plus;
+    private WebElement plus;
 
     @FindBy(xpath = "//div[@class='col-4']//button[@class='btn btn-white bootstrap-touchspin-down ']")
-    List<WebElement> minus;
+    private List<WebElement> minus;
 
     @FindBy(xpath = "//div[@class='col-xs-12 col-md-1']//button[contains(text(),'Search')]")
-    WebElement searchButton;
+    private WebElement searchButton;
 
 
 }

@@ -15,16 +15,15 @@ public class ReflectionManager {
 
     public static Class currentPageClass;
     private static Method[] currentPageMethods;
-    private static WebDriverWait wait;
     private static Logger log = Logger.getLogger(ReflectionManager.class);
-
+    private static BasePage basePage;
 
     public static boolean pageInit(String pageName) throws Exception {
         boolean isInitialized = false;
+        WebDriverWait wait = new WebDriverWait(WebDriverManager.driver, 10);
         try {
             currentPageClass = Class.forName(ConfigFileReader.getInstance().getPageObjectPath() + pageName + "Page");
-            BasePage basePage = (BasePage) currentPageClass.newInstance();
-            wait = new WebDriverWait(WebDriverManager.driver, 10);
+            basePage = (BasePage) currentPageClass.newInstance();
             wait.until(ExpectedConditions.urlContains(basePage.getUrl()));
             currentPageMethods = currentPageClass.getDeclaredMethods();
             isInitialized = true;
@@ -41,11 +40,11 @@ public class ReflectionManager {
         try {
             for (Method method : currentPageMethods) {
                 if (method.getName().equalsIgnoreCase("get" + element)) {
-                    webElement = (WebElement) method.invoke(currentPageClass.newInstance());
+                    webElement = (WebElement) method.invoke(basePage);
                     break;
                 }
             }
-        } catch (IllegalArgumentException | InvocationTargetException | IllegalAccessException | InstantiationException exception) {
+        } catch (IllegalArgumentException | InvocationTargetException | IllegalAccessException exception) {
             exception.printStackTrace();
             log.error(exception.getStackTrace());
         }

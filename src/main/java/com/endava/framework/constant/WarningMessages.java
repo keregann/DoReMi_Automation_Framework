@@ -17,7 +17,9 @@ public enum WarningMessages {
     INVALID_MATCHING_OF_PASSWORD("Password not matching with confirm password."),
     INVALID_PHONE_NUMBER("The phone number must have valid format"),
     INVALID_MATCHING_LOCATION("No matches found"),
-    INVALID_DATE("Invalid date");
+    INVALID_DATE("Invalid date"),
+    INVALID_BOOKING_STATUS("Your booking status is Unpaid"),
+    TOUR_BOOKING_INVALID_EMAIL("Email is required");
 
     private String message;
 }

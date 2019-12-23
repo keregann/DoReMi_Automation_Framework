@@ -16,5 +16,4 @@ public class HotelsPage extends BasePage {
 
     @FindBy(xpath = "//li[1]//button[contains(text(),'Details')]")
     private WebElement detailsButton;
-
 }

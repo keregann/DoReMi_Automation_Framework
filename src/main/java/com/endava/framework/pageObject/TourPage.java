@@ -9,8 +9,8 @@ public class TourPage extends BasePage {
     private final String url = "https://www.phptravels.net/tours/";
 
     @FindBy(xpath = "//a[@class='anchor btn btn-primary btn-wide mt-5']")
-    WebElement descriptionButton;
+    private WebElement descriptionButton;
 
     @FindBy(xpath = "//button[@class='btn btn-secondary btn-block mt-20 btn-action btn-lg loader']")
-    WebElement bookNowButton;
+    private WebElement bookNowButton;
 }

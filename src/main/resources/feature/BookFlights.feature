@@ -1,8 +1,7 @@
+@Sasha
+Feature: Book a flight
 
-Feature: Flights booking
-
-  @sasha
-  Scenario: Book a One Way flight
+  Scenario: US_4_TC_1_Book a One Way flight
     Given 'Home' page is displayed
     When user clicks 'Flights Tab'
     Then 'Flights Tab' page is displayed
@@ -30,6 +29,7 @@ Feature: Flights booking
       | birthday       | 1990-01-01     |
       | passport       | 012345678      |
       | expirationdate | 2020-01-01     |
+    And from the 'Nationality' user chooses 'ANGOLA'
     And user scrolls the page to 'Payment Types' section
     And from the 'Card Type' user chooses 'Visa'
     And from the 'Expiry Month' user chooses 'June (06)'
@@ -43,7 +43,7 @@ Feature: Flights booking
     Then 'Flight Booking' page is displayed
 
 
-  Scenario: Book a Round Trip flight
+  Scenario: US_4_TC_2_Book a Round Trip flight
     Given 'Home' page is displayed
     When user clicks 'Flights Tab'
     Then 'Flights Tab' page is displayed
@@ -58,26 +58,3 @@ Feature: Flights booking
     Then 'Flights Results' page is displayed
     When user clicks 'Book Now Button'
     Then 'Flight Booking' page is displayed
-
-
-  Scenario: Select a feature
-    Given 'Home' page is displayed
-    When user scrolls the page to 'Featured Tours' section
-    And selects a tour
-
-
-  Scenario: Book a tour
-    Given 'Home' page is displayed
-    When user clicks 'Tours Tab'
-    Then 'Tours Tab' page is displayed
-    When from the 'Destination' user chooses 'Sheraton Trip'
-    And from the 'Tour Type' user chooses 'Couples'
-    And user sets '25' date for 'Date'
-    And user sets '2' person for 'Adults'
-    And user clicks 'Search Button'
-    Then 'Tour' page is displayed
-    When user clicks 'Description Button'
-    And user clicks 'Book Now Button'
-    Then 'Tour Book' page is displayed
-    When user enters the following values:
-      |

@@ -22,7 +22,7 @@ public class Steps {
     }
 
     @When("^user clicks '(.*)'( button|)$")
-    public void click(String webElementName, String elem) throws Exception {
+    public void click(String webElementName, String elem) {
         if (elem.equalsIgnoreCase(" button"))
             myActions.forceClick(webElementName);
         else
@@ -37,7 +37,7 @@ public class Steps {
     }
 
     @And("^user chooses '(.*)' for '(.*)'$")
-    public void userChoosesForLocation(String value, String elementName) throws InterruptedException {
+    public void userChoosesForLocation(String value, String elementName) {
         if (elementName.equalsIgnoreCase("destination")) {
             myActions.inputDestination(elementName, value);
         } else {
@@ -47,7 +47,7 @@ public class Steps {
     }
 
     @And("^user sets '(.*)' date for '(.*)'$")
-    public void userSetsDateForDepartCalendar(String value, String elementName) throws Exception {
+    public void userSetsDateForDepartCalendar(String value, String elementName) {
         myActions.inputFlightsDate(elementName, value);
         takeScreenshot(getScreenShotFlag());
     }
@@ -80,5 +80,8 @@ public class Steps {
         myActions.scrollPage(element);
     }
 
-
+    @And("^admin enters the following values:$")
+    public void adminEntersTheFollowingValues(DataTable params) {
+        myActions.inputAdminTable(params);
+    }
 }

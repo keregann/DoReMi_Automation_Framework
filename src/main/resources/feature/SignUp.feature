@@ -1,4 +1,4 @@
-@Margarita
+
 Feature: Sign Up functionality
 
   Scenario: US_2_TC_1 SignUp with valid credentials
@@ -10,7 +10,7 @@ Feature: Sign Up functionality
       | firstName    | Pop                   |
       | lastName     | Diana                 |
       | mobileNumber | 06521347              |
-      | email        | abrakadabra28@mail.ru |
+      | email        | abrakadabra30@mail.ru |
       | password     | 0123456               |
       | confirm      | 0123456               |
     And user clicks 'Sign Up'
@@ -47,7 +47,6 @@ Feature: Sign Up functionality
       | <key> | <value> |
     And user clicks 'Sign Up'
     Then warning '<message>' is present on the page
-
     Examples:
       | key      | value       | message               |
       | Password | 12345       | INVALID_DATA_PASSWORD |

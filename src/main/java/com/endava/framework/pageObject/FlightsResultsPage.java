@@ -9,14 +9,14 @@ public class FlightsResultsPage extends BasePage {
     private final String url = "https://www.phptravels.net/";
 
     @FindBy(xpath = "//div[@class='theme-search-results-item-book']//button[@type='submit']")
-    WebElement bookNowButton;
+    private WebElement bookNowButton;
 
     @FindBy(xpath = "//span[@class='irs-slider from']")
-    WebElement fromSlider;
+    private WebElement fromSlider;
 
     @FindBy(xpath = "//span[@class='irs-slider to']")
-    WebElement toSlider;
+    private WebElement toSlider;
 
     @FindBy(xpath = "//span[contains(text(),'Air Moldova')]")
-    WebElement airMoldovaCheckbox;
+    private WebElement airMoldovaCheckbox;
 }
