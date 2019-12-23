@@ -26,6 +26,7 @@ public class Assertions {
     public static WebElement isDisplayed(WebElement webElement) {
         WebDriverWait wait = new WebDriverWait(driver, 5);
         wait.until(ExpectedConditions.visibilityOf(webElement));
+        assertThat("element is displayed", webElement.isDisplayed(), is(true));
         drawBorder(webElement);
         return webElement;
     }

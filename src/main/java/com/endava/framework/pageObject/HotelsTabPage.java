@@ -23,7 +23,6 @@ public class HotelsTabPage extends BasePage {
     @FindBy(xpath = "//div[contains(@class,'col o2')]//div[contains(@class,'bootstrap-touchspin bootstrap-touchspin-injected')]")
     private WebElement adults;
 
-
     @FindBy(xpath = "//div[contains(@class,'col 01')]//div[contains(@class,'bootstrap-touchspin bootstrap-touchspin-injected')]")
     private WebElement child;
 
@@ -32,4 +31,7 @@ public class HotelsTabPage extends BasePage {
 
     @FindBy(xpath = "//li[@class='select2-no-results']")
     private WebElement noMatchesFound;
+
+    @FindBy(xpath = "//div[@id='invalid_date")
+    private WebElement invaliDate;
 }

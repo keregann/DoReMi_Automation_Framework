@@ -21,7 +21,8 @@ import static com.endava.framework.cucumber.assertion.Assertions.moveTo;
 import static com.endava.framework.manager.ReflectionManager.getWebElement;
 import static com.endava.framework.manager.ReflectionManager.getWebElements;
 import static com.endava.framework.util.DrawBorder.drawBorder;
-import static org.openqa.selenium.support.ui.ExpectedConditions.elementToBeClickable;
+import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertThat;
 import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOf;
 
 
@@ -41,6 +42,7 @@ public class MyActions {
         WebElement webElement = getWebElement(elementName.replace(" ", ""));
         wait.until(ExpectedConditions.visibilityOf(webElement));
         drawBorder(webElement);
+        assertThat(String.format("%s is displayed", elementName), webElement.isDisplayed(), is(true));
         wait.until(ExpectedConditions.elementToBeClickable((moveTo(webElement)))).click();
         log.info(elementName + " is clicked");
     }

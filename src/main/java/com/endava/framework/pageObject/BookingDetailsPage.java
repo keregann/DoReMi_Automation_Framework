@@ -36,4 +36,7 @@ public class BookingDetailsPage extends BasePage {
 
     @FindBy(xpath = "//div[2]/form[2]/button[1]")
     private WebElement completeBooking;
+
+    @FindBy(xpath = "//div[@class='alert alert-danger']")
+    private WebElement warningMessage;
 }
