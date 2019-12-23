@@ -14,17 +14,11 @@ public class LoginPage extends BasePage {
     @FindBy(xpath = "//input[@placeholder='Password']")
     private WebElement password;
 
-    @FindBy(xpath = "//label[@class='custom-control-label']")
-    private WebElement checkBoxRememberMe;
-
     @FindBy(xpath = "//button[@class='btn btn-primary btn-lg btn-block loginbtn']")
     private WebElement loginButton;
 
     @FindBy(xpath = "//a[@class='btn btn-success br25 btn-block form-group']")
     private WebElement singUpButton;
-
-    @FindBy(xpath = "//a[@class='btn btn-warning br25 btn-block']")
-    private WebElement forgotPasswordButton;
 
     @FindBy(xpath = "//div[@class='alert alert-danger']")
     private WebElement warningMessage;

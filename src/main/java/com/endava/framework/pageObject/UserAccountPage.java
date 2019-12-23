@@ -14,18 +14,6 @@ public class UserAccountPage extends BasePage {
     @FindBy(xpath = "//a[@class='dropdown-item tr']")
     private WebElement logOut;
 
-    @FindBy(xpath = "//a[@class='dropdown-item active tr']")
-    private WebElement account;
-
-    @FindBy(xpath = "//a[@class='nav-link go-text-right active']")
-    private WebElement bookings;
-
-    @FindBy(xpath = "//a[contains(text(),'My Profile')]")
-    private WebElement myProfile;
-
-    @FindBy(xpath = "//a[contains(text(),'Wishlist')]")
-    private WebElement wishlist;
-
     @FindBy(xpath = "//a[@class='go-text-right nav-link']")
     private WebElement newsletter;
 

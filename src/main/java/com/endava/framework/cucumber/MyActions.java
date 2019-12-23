@@ -4,10 +4,7 @@ import com.endava.framework.manager.ReflectionManager;
 import com.endava.framework.manager.WebDriverManager;
 import cucumber.api.DataTable;
 import org.apache.log4j.Logger;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -83,6 +80,7 @@ public class MyActions {
             if (e.getText().contains(values)) {
                 drawBorder(e);
                 e.click();
+                log.info(values + " is chosen for " + element);
                 break;
             }
         }
@@ -191,12 +189,21 @@ public class MyActions {
         log.info(" to slider moved");
     }
 
-    public void input(String elementName, String value) {
-        WebElement webElement = getWebElement(elementName.replace(" ", ""));
-        wait.until(visibilityOf(webElement));
-        drawBorder(webElement);
-        webElement.sendKeys(value);
-        log.info(webElement + " input: " + value);
+    public void inputAdminTable(DataTable params) {
+        Map<String, String> values = new LinkedHashMap<>(params.asMap(String.class, String.class));
+        values.forEach((key, value) -> {
+            WebElement webElement = getWebElement(key);
+            isDisplayed(webElement).click();
+            webElement.sendKeys(value, Keys.TAB);
+            log.info(value + " introduced into " + key);
+        });
     }
 
+//    public void input(String elementName, String value) {
+//        WebElement webElement = getWebElement(elementName.replace(" ", ""));
+//        wait.until(visibilityOf(webElement));
+//        drawBorder(webElement);
+//        webElement.sendKeys(value);
+//        log.info(webElement + " input: " + value);
+//    }
 }

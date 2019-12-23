@@ -9,80 +9,77 @@ import java.util.List;
 @Getter
 public class FlightBookingPage extends BasePage {
 
-
     private final String url = "https://www.phptravels.net/thflights/checkout";
 
     @FindBy(xpath = "//span[contains(text(),'Billing Address')]")
-    WebElement billingAddress;
+    private WebElement billingAddress;
 
     @FindBy(xpath = "//h6[contains(text(),'Payment Types')]")
-    WebElement paymentTypes;
+    private WebElement paymentTypes;
 
     @FindBy(xpath = "//select[@id='title']")
-    WebElement title;
+    private WebElement title;
 
     @FindBy(xpath = "//select[@id='title']//option")
-    List<WebElement> titleOptions;
+    private List<WebElement> titleOptions;
 
     @FindBy(xpath = "//input[@id='name']")
-    WebElement name;
+    private WebElement name;
 
     @FindBy(xpath = "//input[@id='surname']")
-    WebElement surname;
+    private WebElement surname;
 
     @FindBy(xpath = "//input[@id='email']")
-    WebElement email;
+    private WebElement email;
 
     @FindBy(xpath = "//input[@id='phone']")
-    WebElement phone;
+    private WebElement phone;
 
     @FindBy(xpath = "//input[@id='birthday']")
-    WebElement birthday;
+    private WebElement birthday;
 
     @FindBy(xpath = "//input[@id='cardno']")
-    WebElement passport;
+    private WebElement passport;
 
     @FindBy(xpath = "//input[@id='expiration']")
-    WebElement expirationDate;
+    private WebElement expirationDate;
 
-    @FindBy(xpath = "//a[@class='select2-choice']")
-    WebElement nationality;
+    @FindBy(xpath = "//select[@id='nationality']")
+    private WebElement nationality;
 
-    @FindBy(xpath = "//div[contains(text(),'MOLDOVA, REPUBLIC OF')]")
-    WebElement nationalityOption;
+    @FindBy(xpath = "//select[@id='nationality']//option")
+    private List<WebElement> nationalityOptions;
 
-    //Payment Types
     @FindBy(xpath = "//select[@id='cardtype']")
-    WebElement cardType;
+    private WebElement cardType;
 
     @FindBy(xpath = "//select[@id='cardtype']//option")
-    List<WebElement> cardTypeOptions;
+    private List<WebElement> cardTypeOptions;
 
     @FindBy(xpath = "//input[@id='card-number']")
-    WebElement cardNumber;
+    private WebElement cardNumber;
 
     @FindBy(xpath = "//select[@id='expiry-month']")
-    WebElement expiryMonth;
+    private WebElement expiryMonth;
 
     @FindBy(xpath = "//select[@id='expiry-month']//option")
-    List<WebElement> expiryMonthOptions;
+    private List<WebElement> expiryMonthOptions;
 
     @FindBy(xpath = "//select[@id='expiry-year']")
-    WebElement expiryYear;
+    private WebElement expiryYear;
 
     @FindBy(xpath = "//select[@id='expiry-year']//option")
-    List<WebElement> expiryYearOptions;
+    private List<WebElement> expiryYearOptions;
 
     @FindBy(xpath = "//input[@id='cvv']")
-    WebElement cvv;
+    private WebElement cvv;
 
     @FindBy(xpath = "//strong[@class='RTL go-right']")
-    WebElement readTheTerms;
+    private WebElement readTheTerms;
 
-    //Confirmation
     @FindBy(xpath = "//label[contains(text(),'By clicking to complete this booking I acknowledge')]")
-    WebElement acceptCheckBox;
+    private WebElement acceptCheckBox;
 
     @FindBy(xpath = "//button[@id='confirmBooking']")
-    WebElement availabilityCheckingButton;
+    private WebElement availabilityCheckingButton;
 }
