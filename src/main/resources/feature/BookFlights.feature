@@ -1,6 +1,7 @@
-@sasha
+
 Feature: Flights booking
 
+  @sasha
   Scenario: Book a One Way flight
     Given 'Home' page is displayed
     When user clicks 'Flights Tab'

@@ -3,7 +3,6 @@ package com.endava.framework.cucumber.stepdef;
 import com.endava.framework.constant.WarningMessages;
 import com.endava.framework.cucumber.MyActions;
 import com.endava.framework.cucumber.assertion.Assertions;
-import com.endava.framework.manager.ReflectionManager;
 import cucumber.api.DataTable;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
@@ -42,7 +41,7 @@ public class Steps {
         if (elementName.equalsIgnoreCase("destination")) {
             myActions.inputDestination(elementName, value);
         } else {
-            myActions.inputDestination(elementName, value);
+            myActions.inputLocation(elementName, value);
         }
         takeScreenshot(getScreenShotFlag());
     }
@@ -75,4 +74,11 @@ public class Steps {
     public void userSetsThePriceRange() {
         myActions.dragAndDrop();
     }
+
+    @And("^user scrolls the page to '(.*)' section$")
+    public void userScrollsThePageToReadTheTermsSection(String element) {
+        myActions.scrollPage(element);
+    }
+
+
 }
